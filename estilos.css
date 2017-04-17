@@ -1,0 +1,114 @@
+
+/*INICIO*/
+.login {
+		width: 400px;
+		height: 100px;
+		padding-top: 200px;
+		padding-left: 400px;
+}
+
+/*INDEX*/
+/*https://color.adobe.com/es/A-Bank---Apropriate-color-theme-8532485/edit/?copy=true*/
+#bunker{
+  width: 100%;
+}
+
+#cabecera {
+  width: 100%;
+  height:100px;
+  background-color:#FFFFFF;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+#cabecera img{
+  float: left;
+}
+#cabecera h1{
+  font-family: 'Lalezar', Arial;
+  color:#0A1B40;
+  font-size: 40px;
+  margin: 0 auto;
+}
+#cabecera p{
+  float: right;
+}
+#navegacion {
+  width: 100%;
+  height:20px;
+  background-color:#FFFFFF;
+  color: #FFFFFF;
+}
+#contenedor {
+  width: 100%;
+  height: 500px;
+}
+#menu {
+  float: left;
+  width: 150px;
+  height:100%;
+  background-color:#276EFF;
+  box-sizing: border-box;
+}
+#contenido {
+  float: left;
+  width: 1000px;
+  height: 500px;
+  background-color:#FFFFFF;
+}
+#pie {
+  clear: both;
+  width: 100%;
+  height:50px;
+  background-color:#0A1B40;
+  box-sizing: border-box;
+}
+
+/*MENU A*/
+
+   body{
+   font-size: 12px;
+   font-family:Arial;
+}
+ nav{
+   width:150px;
+   margin: 5% auto;
+   background: #276EFF;
+}
+ nav li{
+   list-style: none;
+   position:relative; /* importante, para que el submenu tome la posición correcta*/
+}
+ nav li a{
+   color:#FFFFFF;
+   text-decoration:none;
+   padding: 5px;
+   display:block;
+}
+ nav li a:hover{
+   color:#08D;
+}
+ nav li.parent:hover{
+   border:1px #FFFFFF solid;
+   margin:-1px;
+   background:#276EFF;
+}
+ nav li li a{
+   width:150px;/*el ancho de los links del submenu, debe ser fijo, esto servirá para crear la animación mas adelante */
+   display:block;
+}
+/* aquí esta lo importante!! */
+ nav li ul {
+   width: 150px;
+   margin:0;
+   display:none;
+   background:#276EFF;
+   border:1px #FFFFFF solid;
+   position: absolute;
+   left: 100%;
+   top:-1px;
+}
+ nav li:hover ul {
+   display: block;
+}
+
+/*MENU F*/
