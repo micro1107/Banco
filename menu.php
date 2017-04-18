@@ -11,7 +11,7 @@
             <ul>
                 <li><a href='index.php?sel=U1'>Usuarios</a></li>
                 <li><a href='index.php?sel=R1'>Roles</a></li>
-                <li><a href=#>Clientes</a></li>
+                <li><a href='index.php?sel=C1'>Clientes</a></li>
                 <li><a href=#>Funcionarios</a></li>
 				<li><a href=#>Cuentas</a></li>
             </ul>

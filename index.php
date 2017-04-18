@@ -72,7 +72,7 @@ else {
 			<div id="contenido">
              <?php 
                                 switch ( $_GET['sel'] ) {
-                                    case 'U1'   : include ('usuario_listar.php');
+                                    case 'U1'   : include ('usuario/usuario_listar.php');
                                                 print 'Lista de usuarios';
                                                 break;
                                     case 'U2'  : include('usuario_formulario.php');
@@ -90,11 +90,31 @@ else {
                                     case 'U6'  : include('usuario_actualizar.php');  
                                                 print 'Actualización de usuario';
                                                 break;
+
+                                    case 'C1'   : include ('cliente/cliente_listar.php');
+                                                print 'Lista de clientes';
+                                                break;
+                                    case 'C2'  : include('cliente/cliente_formulario.php');
+                                                print 'Registro de nuevo cliente';
+                                                break;
+                                    case 'C3'  : include('cliente_grabar.php');
+                                                print 'Grabación de cliente';
+                                                break;
+                                    case 'C4'  : include('cliente_eliminar.php');
+                                                print 'Eliminación de cliente';
+                                                break;
+                                    case 'C5'  : include('cliente_editar.php');
+                                                print 'Edición de cliente';
+                                                break;
+                                    case 'C6'  : include('cliente_actualizar.php');  
+                                                print 'Actualización de cliente';
+                                                break;
+
                                     } 
                 ?>
             </div>
 		</div>
-		<div id="pie" heigth: 50px;> Pie de pagina </div>
+		<div id="pie" heigth: 50px;> Creado por Julian Ibarra </div>
         <?php    
      }
 

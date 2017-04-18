@@ -57,7 +57,7 @@ class Rol {
     function insertar( ) {
         $this->con->sql= "INSERT INTO rol (id_rol,tipo) VALUES (
                                                      ".$this->getId_rol().",
-                                                     '".$this->getTipo()."'";
+                                                     '".$this->getTipo()."')";
 
                                                      
                 

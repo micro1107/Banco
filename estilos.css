@@ -61,6 +61,8 @@
   height:50px;
   background-color:#0A1B40;
   box-sizing: border-box;
+  color: #FFFFFF;
+  float: center;
 }
 
 /*MENU A*/
@@ -73,6 +75,7 @@
    width:150px;
    margin: 5% auto;
    background: #276EFF;
+   font-family: 'Lalezar', Arial;
 }
  nav li{
    list-style: none;

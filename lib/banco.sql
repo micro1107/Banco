@@ -18,6 +18,7 @@ tipo varchar(2)
 CREATE TABLE cliente(
 documento int(15) PRIMARY KEY NOT NULL,
 nombre varchar(50) NOT NULL,
+email varchar(50) NOT NULL,
 direccion varchar(30) NOT NULL,
 telefono varchar(15) NOT NULL
 );
@@ -73,3 +74,4 @@ INSERT INTO rol (id_rol, tipo) VALUES (3,'C');
 
 INSERT INTO usuario (login, pwd, estado, id_rol, documento) VALUES ('pepe',md5(123),'A',1,123);
 
+INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (123, 'Armando Casas', 'armando@gmail.com', 'Carrera 100 56-43', '948828939');
