@@ -69,8 +69,8 @@
                     print "<td>".$row['email']."</td>";
                     print "<td>".$row['direccion']."</td>";
                     print "<td>".$row['telefono']."</td>";
-                    print "<td><a href='index.php?sel=C5&"."login=".$row['documento']."'>Editar</a></td>";
-                    print "<td><a href='index.php?sel=C4&"."login=".$row['documento']."'>Eliminar</a></td>";
+                    print "<td><a href='index.php?sel=C5&"."documento=".$row['documento']."'>Editar</a></td>";
+                    print "<td><a href='index.php?sel=C4&"."documento=".$row['documento']."'>Eliminar</a></td>";
                     print "</tr>";
                 }
             ?>

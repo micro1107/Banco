@@ -89,8 +89,8 @@ class Cliente {
         $this->con->sql= "INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (
                                                      ".$this->getDocumento().",
                                                      '".$this->getNombre()."',
-                                                     ".$this->getEmail()."',
-                                                     '".$this->getDireccion()."'
+                                                     '".$this->getEmail()."',
+                                                     '".$this->getDireccion()."',
                                                      '".$this->getTelefono()."')";
 
                                                      
@@ -102,10 +102,10 @@ class Cliente {
     
     function actualizar( ) {
         $this->con->sql= "UPDATE cliente  
-                          SET   nombre='".$this->getNombre()."',
-                                email = ".$this->getEmail()."',
+                          SET   nombre = '".$this->getNombre()."',
+                                email = '".$this->getEmail()."',
                                 direccion = '".$this->getDireccion()."',
-                                telefono = '".$this->getTelefono()."',
+                                telefono = '".$this->getTelefono()."'
                           WHERE documento = ".$this->getDocumento().";";
                     
         $this->con->conectarse();
@@ -122,7 +122,7 @@ class Cliente {
     }
     
    function consultar($documento) {
-      $this->id_rol = $id_rol;
+      $this->documento = $documento;
       $this->con->conectarse();
       $this->con->sql = "SELECT * FROM cliente WHERE documento=".$this->documento."";
       

@@ -3,8 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+    <link href="https://fonts.googleapis.com/css?family=Lalezar" rel="stylesheet">
+    <style>
+        h1{
+        padding-left: 100px;
+        font-family: 'Lalezar', Arial;
+        color:#0A1B40;
+        font-size: 30px; 
+    }
+    form{
+        padding-left: 100px;
+    }
+    </style>
 </head>
 <body>
+    <h1>Editar Datos de Usuario</h1>
 	<form name ='usuario_editar' action=index.php?sel=U6 method='post'>
         <table>
                 <tr>
@@ -29,7 +42,7 @@
                 </tr>
                 <tr>
                     <td>Password</td>
-                     <td><input name="txtPwd" type="password"  value = "<?php echo $p->getPwd(); ?>" ></td>;
+                     <td><input name="txtPwd" type="password"  value = "<?php echo $p->getPwd(); ?>" ></td>
                 </tr>
                 <tr>
                     <td>Rol</td>

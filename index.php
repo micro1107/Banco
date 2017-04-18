@@ -73,41 +73,29 @@ else {
              <?php 
                                 switch ( $_GET['sel'] ) {
                                     case 'U1'   : include ('usuario/usuario_listar.php');
-                                                print 'Lista de usuarios';
                                                 break;
                                     case 'U2'  : include('usuario_formulario.php');
-                                                print 'Registro de nuevo usuario';
                                                 break;
                                     case 'U3'  : include('usuario_grabar.php');
-                                                print 'Grabación de usuario';
                                                 break;
                                     case 'U4'  : include('usuario_eliminar.php');
-                                                print 'Eliminación de usuario';
                                                 break;
                                     case 'U5'  : include('usuario_editar.php');
-                                                print 'Edición de usuario';
                                                 break;
                                     case 'U6'  : include('usuario_actualizar.php');  
-                                                print 'Actualización de usuario';
                                                 break;
 
                                     case 'C1'   : include ('cliente/cliente_listar.php');
-                                                print 'Lista de clientes';
                                                 break;
                                     case 'C2'  : include('cliente/cliente_formulario.php');
-                                                print 'Registro de nuevo cliente';
                                                 break;
-                                    case 'C3'  : include('cliente_grabar.php');
-                                                print 'Grabación de cliente';
+                                    case 'C3'  : include('cliente/cliente_grabar.php');
                                                 break;
-                                    case 'C4'  : include('cliente_eliminar.php');
-                                                print 'Eliminación de cliente';
+                                    case 'C4'  : include('cliente/cliente_eliminar.php');
                                                 break;
-                                    case 'C5'  : include('cliente_editar.php');
-                                                print 'Edición de cliente';
+                                    case 'C5'  : include('cliente/cliente_editar.php');
                                                 break;
-                                    case 'C6'  : include('cliente_actualizar.php');  
-                                                print 'Actualización de cliente';
+                                    case 'C6'  : include('cliente/cliente_actualizar.php');  
                                                 break;
 
                                     } 
