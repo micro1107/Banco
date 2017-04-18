@@ -7,8 +7,7 @@ login varchar(50) PRIMARY KEY NOT NULL,
 pwd varchar(50) NOT NULL,
 estado varchar(2) NOT NULL,
 id_rol int(2) NOT NULL,
-documento int(15),
-id_funcionario int(15)
+documento int(15)
 );
 
 CREATE TABLE rol(
@@ -72,5 +71,5 @@ INSERT INTO rol (id_rol, tipo) VALUES (1,'A');
 INSERT INTO rol (id_rol, tipo) VALUES (2,'F');
 INSERT INTO rol (id_rol, tipo) VALUES (3,'C');
 
-INSERT INTO usuario (login, pwd, estado, id_rol) VALUES ('pepe',md5(123),'A',1);
+INSERT INTO usuario (login, pwd, estado, id_rol, documento) VALUES ('pepe',md5(123),'A',1,123);
 

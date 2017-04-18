@@ -71,19 +71,24 @@ else {
             </div>
 			<div id="contenido">
              <?php 
-                    print $_GET['sel'];
                                 switch ( $_GET['sel'] ) {
                                     case 'U1'   : include ('usuario_listar.php');
+                                                print 'Lista de usuarios';
                                                 break;
                                     case 'U2'  : include('usuario_formulario.php');
+                                                print 'Registro de nuevo usuario';
                                                 break;
                                     case 'U3'  : include('usuario_grabar.php');
+                                                print 'Grabación de usuario';
                                                 break;
                                     case 'U4'  : include('usuario_eliminar.php');
+                                                print 'Eliminación de usuario';
                                                 break;
                                     case 'U5'  : include('usuario_editar.php');
+                                                print 'Edición de usuario';
                                                 break;
                                     case 'U6'  : include('usuario_actualizar.php');  
+                                                print 'Actualización de usuario';
                                                 break;
                                     } 
                 ?>

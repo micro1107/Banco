@@ -6,7 +6,6 @@ class Usuario {
     var $estado;
     var $id_rol;
     var $documento;  
-    var $id_funcionario;
     
     var $con;
     var $lista;
@@ -18,7 +17,6 @@ class Usuario {
         $this->estado="";
         $this->id_rol=0;
         $this->documento=0;  
-        $this->id_funcionario=0;
         
         $this->con = new MySql();
         $this->lista = null;
@@ -85,14 +83,6 @@ class Usuario {
         return $this->estado;
     }
 
-    function setId_funcionario( $id_funcionario) {
-        $this->id_funcionario = $id_funcionario;
-    }
-
-    function getId_funcionario( ) {
-        return $this->id_funcionario;
-    }
-
     function setDocumento( $documento) {
         $this->documento = $documento;
     }
@@ -101,6 +91,7 @@ class Usuario {
         return $this->documento;
     }
 
+    /*
     function set( $login, $pwd, $rol ) {
         if ( $login==NULL || $login=='' || $pwd==NULL || $pwd==''
                 || $rol==NULL || $rol=='')
@@ -112,15 +103,15 @@ class Usuario {
             return true;
         }
     }
-    
+    */
     
     function insertar( ) {
-        $this->con->sql= "INSERT INTO usuario (login,pwd,estado,id_rol,documento,id_funcionario) VALUES ('".$this->getLogin()."', 
+        $this->con->sql= "INSERT INTO usuario (login,pwd,estado,id_rol,documento) VALUES ('".$this->getLogin()."', 
                                                      MD5('".$this->getPwd()."'), 
-                                                     ".$this->getEstado().",
+                                                     '".$this->getEstado()."',
                                                      ".$this->getId_rol().",
-                                                     ".$this->getDocumento().",
-                                                     ".$this->getId_funcionario()."";
+                                                     ".$this->getDocumento().")";
+                                                     
                 
         $this->con->conectarse();
         $this->con->actualizar();
@@ -131,7 +122,7 @@ class Usuario {
         $this->con->sql= "UPDATE usuario  
                           SET  pwd= MD5('".$this->getPwd()."'), 
                                id_rol=".$this->getId_rol().",
-                               estado='".$this->getEstado()."',
+                               estado='".$this->getEstado()."'
                           WHERE login = '".$this->getLogin()."' ;";
                     
         $this->con->conectarse();
@@ -157,13 +148,15 @@ class Usuario {
       if ($this->con->numReg > 0) {
          $this->pwd = mysql_result($this->con->rtaSql,0,"pwd");
          $this->id_rol = mysql_result($this->con->rtaSql,0,"id_rol");
+         $this->documento = mysql_result($this->con->rtaSql,0,"documento");
+         $this->estado = mysql_result($this->con->rtaSql,0,"estado");
       }
       $this->con->desconectarse();
    }
 
   function listar( ) {
       $this->con->conectarse();
-      $this->con->sql = "SELECT login, pwd, id_rol, estado, documento, id_funcionario ".
+      $this->con->sql = "SELECT login, pwd, id_rol, estado, documento ".
                 "FROM usuario";
 
       $this->con->consultar();
