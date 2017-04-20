@@ -9,10 +9,9 @@
      /*LISTAR*/
 
     .titulo td{
-    font-family: Arial;
-    font-size: 13px;
+    font-family: 'Lalezar', Arial;
+    font-size: 15px;
     background: #CCE5FF;
-    font-weight: bold;
     text-align: center;
     }
 
@@ -67,6 +66,11 @@
                     $r->consultarTipo($row['id_rol']);
                     $tipo = $r->getTipo();
                     $rol = "";
+
+                    $u->consultar($row['login']);
+                    $estado = $u->getEstado();
+                    $esta ="";
+
                     switch ($tipo) {
                         case 'A':
                             $rol="Administrador";
@@ -80,12 +84,21 @@
 
                     }
 
+                    switch ($estado) {
+                        case 'A':
+                            $esta = "Activo";
+                            break;
+                        case 'I':
+                            $esta = "Inactivo";
+                            break;
+                    }
+
                     print "<tr>";
                     print "<td>".$row['login']."</td>";
                     print "<td>".$row['pwd']."</td>";
                     print "<td>".$rol."</td>";
                     print "<td>".$row['documento']."</td>";
-                    print "<td>".$row['estado']."</td>";
+                    print "<td>".$esta."</td>";
                     print "<td><a href='index.php?sel=U5&"."login=".$row['login']."'>Editar</a></td>";
                     print "<td><a href='index.php?sel=U4&"."login=".$row['login']."'>Eliminar</a></td>";
                     print "</tr>";

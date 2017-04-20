@@ -92,7 +92,7 @@ class Rol {
       $this->con->consultar();
       $this->numReg=$this->con->numReg;
       if ($this->con->numReg > 0) {
-         $this->tipo = mysql_result($this->con->rtaSql,0,"tipo");
+        $this->tipo = mysql_result($this->con->rtaSql,0,"tipo");
       }
       $this->con->desconectarse();
    }

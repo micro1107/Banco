@@ -12,15 +12,17 @@
                 <li><a href='index.php?sel=U1'>Usuarios</a></li>
                 <li><a href='index.php?sel=R1'>Roles</a></li>
                 <li><a href='index.php?sel=C1'>Clientes</a></li>
-                <li><a href=#>Funcionarios</a></li>
-				<li><a href=#>Cuentas</a></li>
+                <li><a href='index.php?sel=F1'>Funcionarios</a></li>
+				<li><a href='index.php?sel=S1'>Sucursales</a></li>
             </ul>
         </li>
-        <li class=parent><a href=#>Liquidación</a>
+        <li class=parent><a href=#>Financiero</a>
             <ul>
-                <li><a href=#>Cuentas de cobro</a></li>
-                <li><a href=#>Nomina</a></li>
-                <li><a href=#>Anime</a></li>
+                <li><a href='index.php?sel=CU1'>Cuentas</a></li>               
+                <li><a href=#>Consignaciones</a></li>
+                <li><a href=#>Retiros</a></li>
+                <li><a href='index.php?sel=CU1'>Transferencias</a></li>
+                <li><a href='index.php?sel=CU1'>Sobregiros</a></li>
             </ul>
         </li>
     </nav>                                                          

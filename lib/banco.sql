@@ -24,8 +24,9 @@ telefono varchar(15) NOT NULL
 );
 
 CREATE TABLE funcionario(
-id_funcionario int(15) PRIMARY KEY NOT NULL,
+documento int(15) PRIMARY KEY NOT NULL,
 nombre varchar(50) NOT NULL,
+email varchar(50) NOT NULL,
 telefono varchar(15) NOT NULL,
 id_sucursal int(15) NOT NULL
 );
@@ -75,3 +76,6 @@ INSERT INTO rol (id_rol, tipo) VALUES (3,'C');
 INSERT INTO usuario (login, pwd, estado, id_rol, documento) VALUES ('pepe',md5(123),'A',1,123);
 
 INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (123, 'Armando Casas', 'armando@gmail.com', 'Carrera 100 56-43', '948828939');
+
+INSERT INTO funcionario (documento, nombre, email, telefono, id_sucursal) VALUES (666, 'Ana Herrera', 'ana@gmail.com', '675665', 1);
+

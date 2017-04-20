@@ -85,6 +85,9 @@ else {
                                     case 'U6'  : include('usuario_actualizar.php');  
                                                 break;
 
+                                    case 'R1' : include ('rol/rol_listar.php');
+                                                break;
+
                                     case 'C1'   : include ('cliente/cliente_listar.php');
                                                 break;
                                     case 'C2'  : include('cliente/cliente_formulario.php');
@@ -96,6 +99,19 @@ else {
                                     case 'C5'  : include('cliente/cliente_editar.php');
                                                 break;
                                     case 'C6'  : include('cliente/cliente_actualizar.php');  
+                                                break;
+
+                                    case 'F1'   : include ('funcionario/funcionario_listar.php');
+                                                break;
+                                    case 'F2'  : include('funcionario/funcionario_formulario.php');
+                                                break;
+                                    case 'F3'  : include('funcionario/funcionario_grabar.php');
+                                                break;
+                                    case 'F4'  : include('funcionario/funcionario_eliminar.php');
+                                                break;
+                                    case 'F5'  : include('funcionario/funcionario_editar.php');
+                                                break;
+                                    case 'F6'  : include('funcionario/funcionario_actualizar.php');  
                                                 break;
 
                                     } 

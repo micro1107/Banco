@@ -44,36 +44,43 @@
     </style>
 </head>
 <body>
-    <h1>Clientes</h1>
+    <h1>Roles</h1>
 	<form name="index" action="index.php?sel=C2">
         <table border="1" class="tabla">
             <tr class="titulo">
-            <td>DOCUMENTO</td><td>NOMBRE</td><td>EMAIL</td><td>DIRECCION</td><td>TELEFONO</td>
+            <td>ID_ROL</td><td>TIPO</td>
             </tr>
             <?php
                 include("lib/config.php");
                 include("lib/mysql_lib.php");
-                include("lib/cliente.php");
+                include("lib/rol.php");
                 
                 
-                $c = new Cliente();
-                $c->listar();
-                $result = $c->lista;
+                $r = new Rol();
+                $r->listar();
+                $result = $r->lista;
 
                 while ($row = mysql_fetch_array($result)) {
 
+                    switch ($row['tipo']) {
+                        case 'A':
+                            $rol="Administrador";
+                            break;
+                        case 'F':
+                            $rol="Funcionario";
+                            break;
+                        case 'C':
+                            $rol="Cliente";
+                            break;
+
+                    }
+
                     print "<tr>";
-                    print "<td>".$row['documento']."</td>";
-                    print "<td>".$row['nombre']."</td>";
-                    print "<td>".$row['email']."</td>";
-                    print "<td>".$row['direccion']."</td>";
-                    print "<td>".$row['telefono']."</td>";
-                    print "<td><a href='index.php?sel=C5&"."documento=".$row['documento']."'>Editar</a></td>";
-                    print "<td><a href='index.php?sel=C4&"."documento=".$row['documento']."'>Eliminar</a></td>";
+                    print "<td>".$row['id_rol']."</td>";
+                    print "<td>".$rol."</td>";
                     print "</tr>";
                 }
             ?>
-            <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
         </table>
         </form>
 </body>

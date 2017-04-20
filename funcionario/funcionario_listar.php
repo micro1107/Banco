@@ -16,7 +16,7 @@
     }
 
     td{
-    font-family: Arial;
+    font-family:  Arial;
     font-size: 11px;
     text-align: center;
     }
@@ -44,21 +44,21 @@
     </style>
 </head>
 <body>
-    <h1>Clientes</h1>
+    <h1>Funcionarios</h1>
 	<form name="index" action="index.php?sel=C2">
         <table border="1" class="tabla">
             <tr class="titulo">
-            <td>DOCUMENTO</td><td>NOMBRE</td><td>EMAIL</td><td>DIRECCION</td><td>TELEFONO</td>
+            <td>DOCUMENTO</td><td>NOMBRE</td><td>EMAIL</td><td>SUCURSAL</td><td>TELEFONO</td>
             </tr>
             <?php
                 include("lib/config.php");
                 include("lib/mysql_lib.php");
-                include("lib/cliente.php");
+                include("lib/funcionario.php");
                 
                 
-                $c = new Cliente();
-                $c->listar();
-                $result = $c->lista;
+                $f = new Funcionario();
+                $f->listar();
+                $result = $f->lista;
 
                 while ($row = mysql_fetch_array($result)) {
 
@@ -66,10 +66,10 @@
                     print "<td>".$row['documento']."</td>";
                     print "<td>".$row['nombre']."</td>";
                     print "<td>".$row['email']."</td>";
-                    print "<td>".$row['direccion']."</td>";
+                    print "<td>".$row['id_sucursal']."</td>";
                     print "<td>".$row['telefono']."</td>";
-                    print "<td><a href='index.php?sel=C5&"."documento=".$row['documento']."'>Editar</a></td>";
-                    print "<td><a href='index.php?sel=C4&"."documento=".$row['documento']."'>Eliminar</a></td>";
+                    print "<td><a href='index.php?sel=F5&"."documento=".$row['documento']."'>Editar</a></td>";
+                    print "<td><a href='index.php?sel=F4&"."documento=".$row['documento']."'>Eliminar</a></td>";
                     print "</tr>";
                 }
             ?>
