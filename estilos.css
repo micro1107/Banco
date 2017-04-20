@@ -19,6 +19,11 @@
   background-color:#FFFFFF;
   margin: 0 auto;
   box-sizing: border-box;
+
+  position: fixed;
+  display: inline-block;
+  flex-direction: row;
+  justify-content: space-between;
 }
 #cabecera img{
   float: left;

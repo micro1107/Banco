@@ -101,12 +101,12 @@ class Sucursal {
     }
     
     function actualizar( ) {
-        $this->con->sql= "UPDATE cliente  
+        $this->con->sql= "UPDATE sucursal  
                           SET   nombre = '".$this->getNombre()."',
-                                email = '".$this->getEmail()."',
+                                ciudad = '".$this->getCiudad()."',
                                 direccion = '".$this->getDireccion()."',
                                 telefono = '".$this->getTelefono()."'
-                          WHERE Id_sucursal = ".$this->getDocumento().";";
+                          WHERE id_sucursal = ".$this->getId_sucursal().";";
                     
         $this->con->conectarse();
         $this->con->actualizar();
@@ -114,23 +114,23 @@ class Sucursal {
     }
 
     function eliminar( ) {
-        $this->con->sql= "DELETE FROM cliente WHERE documento=".$this->getDocumento()."";
+        $this->con->sql= "DELETE FROM sucursal WHERE id_sucursal=".$this->getId_sucursal()."";
                     
         $this->con->conectarse();
         $this->con->actualizar();
         $this->con->desconectarse(); 
     }
     
-   function consultar($documento) {
-      $this->documento = $documento;
+   function consultar($id_sucursal) {
+      $this->id_sucursal = $id_sucursal;
       $this->con->conectarse();
-      $this->con->sql = "SELECT * FROM cliente WHERE documento=".$this->documento."";
+      $this->con->sql = "SELECT * FROM sucursal WHERE id_sucursal=".$this->id_sucursal."";
       
       $this->con->consultar();
       $this->numReg=$this->con->numReg;
       if ($this->con->numReg > 0) {
          $this->nombre = mysql_result($this->con->rtaSql,0,"nombre");
-         $this->email = mysql_result($this->con->rtaSql,0,"email");
+         $this->ciudad = mysql_result($this->con->rtaSql,0,"ciudad");
          $this->telefono = mysql_result($this->con->rtaSql,0,"telefono");
          $this->direccion = mysql_result($this->con->rtaSql,0,"direccion");
       }
@@ -139,8 +139,8 @@ class Sucursal {
 
   function listar( ) {
       $this->con->conectarse();
-      $this->con->sql = "SELECT documento, nombre, email, direccion, telefono ".
-                "FROM cliente";
+      $this->con->sql = "SELECT id_sucursal, nombre, direccion, telefono, ciudad ".
+                "FROM sucursal";
 
       $this->con->consultar();
       $this->lista = $this->con->rtaSql;

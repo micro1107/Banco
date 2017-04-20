@@ -20,7 +20,7 @@
         function validar() {
             var txtPwd, txtLogin, txtRol;
             
-            document.cliente_grabar.submit();
+            document.funcionario_grabar.submit();
             
         }
     </script>
@@ -58,7 +58,7 @@
                             $result = $s->lista;
                         
                              while ($row = mysql_fetch_array($result)) {
-                                print "<option value = row['id_sucursal']>row['nombre']</option>";
+                                print "<option value = $row[id_sucursal]>$row[nombre]</option>";
                             }
                         ?>
                         </select></td>

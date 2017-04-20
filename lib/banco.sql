@@ -79,3 +79,6 @@ INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (123,
 
 INSERT INTO funcionario (documento, nombre, email, telefono, id_sucursal) VALUES (666, 'Ana Herrera', 'ana@gmail.com', '675665', 1);
 
+INSERT INTO sucursal (id_sucursal, nombre, direccion, telefono, ciudad) VALUES (1, 'Centro', 'Calle 5 13-9', '648823', 'Cali');
+INSERT INTO sucursal (id_sucursal, nombre, direccion, telefono, ciudad) VALUES (2, 'Ciudad Jardin', 'Calle 5 124-31', '787882', 'Cali');
+

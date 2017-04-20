@@ -45,7 +45,7 @@
 </head>
 <body>
     <h1>Funcionarios</h1>
-	<form name="index" action="index.php?sel=C2">
+	<form name="index" action="index.php?sel=F2">
         <table border="1" class="tabla">
             <tr class="titulo">
             <td>DOCUMENTO</td><td>NOMBRE</td><td>EMAIL</td><td>SUCURSAL</td><td>TELEFONO</td>
@@ -54,26 +54,32 @@
                 include("lib/config.php");
                 include("lib/mysql_lib.php");
                 include("lib/funcionario.php");
+                include("lib/sucursal.php");
                 
                 
                 $f = new Funcionario();
                 $f->listar();
                 $result = $f->lista;
 
+                $s = new Sucursal();
+
                 while ($row = mysql_fetch_array($result)) {
+
+                    $s->consultar($row['id_sucursal']);
+                    $nombre = $s->getNombre();
 
                     print "<tr>";
                     print "<td>".$row['documento']."</td>";
                     print "<td>".$row['nombre']."</td>";
                     print "<td>".$row['email']."</td>";
-                    print "<td>".$row['id_sucursal']."</td>";
+                    print "<td>".$nombre."</td>";
                     print "<td>".$row['telefono']."</td>";
                     print "<td><a href='index.php?sel=F5&"."documento=".$row['documento']."'>Editar</a></td>";
                     print "<td><a href='index.php?sel=F4&"."documento=".$row['documento']."'>Eliminar</a></td>";
                     print "</tr>";
                 }
             ?>
-            <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
+            <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=F2';" value="Nuevo"></td></tr>
         </table>
         </form>
 </body>
