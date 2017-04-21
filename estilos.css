@@ -3,10 +3,29 @@
 .login {
 		width: 400px;
 		height: 100px;
-		padding-top: 200px;
-		padding-left: 400px;
+		padding-left: 450px;
 }
 
+.logos{
+  padding-top: 100px;
+  padding-left: 400px;
+  color:#0A1B40;
+  margin: 0 auto; 
+  line-height: 0;
+}
+.logos h1{
+  font-family: 'Lalezar', Arial;
+  font-size: 80px;
+}
+.imagen {
+  padding-left: 550px;
+}
+
+td{
+  font-family: 'Lalezar', Arial;
+  font-size: 20px;
+  color:#0A1B40;
+}
 /*INDEX*/
 /*https://color.adobe.com/es/A-Bank---Apropriate-color-theme-8532485/edit/?copy=true*/
 #bunker{

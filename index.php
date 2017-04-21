@@ -114,6 +114,19 @@ else {
                                     case 'F6'  : include('funcionario/funcionario_actualizar.php');  
                                                 break;
 
+                                    case 'S1'   : include ('sucursal/sucursal_listar.php');
+                                                break;
+                                    case 'S2'  : include('sucursal/sucursal_formulario.php');
+                                                break;
+                                    case 'S3'  : include('sucursal/sucursal_grabar.php');
+                                                break;
+                                    case 'S4'  : include('sucursal/sucursal_eliminar.php');
+                                                break;
+                                    case 'S5'  : include('sucursal/sucursal_editar.php');
+                                                break;
+                                    case 'S6'  : include('sucursal/sucursal_actualizar.php');  
+                                                break;
+
                                     } 
                 ?>
             </div>
