@@ -21,7 +21,7 @@
   padding-left: 550px;
 }
 
-td{
+.inicio td{
   font-family: 'Lalezar', Arial;
   font-size: 20px;
   color:#0A1B40;
@@ -38,11 +38,12 @@ td{
   background-color:#FFFFFF;
   margin: 0 auto;
   box-sizing: border-box;
-
+/*
   position: fixed;
   display: inline-block;
   flex-direction: row;
   justify-content: space-between;
+*/
 }
 #cabecera img{
   float: left;

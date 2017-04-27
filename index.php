@@ -67,7 +67,7 @@ else {
                                                     include('menu.php');
                                                 }
                                         ?>
-                                        
+
             </div>
 			<div id="contenido">
              <?php 
@@ -125,6 +125,23 @@ else {
                                     case 'S5'  : include('sucursal/sucursal_editar.php');
                                                 break;
                                     case 'S6'  : include('sucursal/sucursal_actualizar.php');  
+                                                break;
+
+                                    case 'P1'   : include ('cuenta/cuenta_listar.php');
+                                                break;
+                                    case 'P2'  : include('cuenta/cuenta_formulario.php');
+                                                break;
+                                    case 'P3'  : include('cuenta/cuenta_grabar.php');
+                                                break;
+                                    case 'P4'  : include('cuenta/cuenta_eliminar.php');
+                                                break;
+                                    case 'P5'  : include('cuenta/cuenta_persona.php');
+                                                break;
+                                    case 'P6'  : include('cuenta/cuenta_actualizar.php');  
+                                                break;
+                                    case 'P7'  : include('cuenta/cuenta_bloquear.php');  
+                                                break;
+                                    case 'P8'  : include('cuenta/cuenta_sucursal.php');
                                                 break;
 
                                     } 

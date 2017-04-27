@@ -18,8 +18,11 @@
         </li>
         <li class=parent><a href=#>Financiero</a>
             <ul>
-                <li><a href='index.php?sel=CU1'>Cuentas</a></li>               
-                <li><a href=#>Consignaciones</a></li>
+                <li class=parent><a href='index.php?sel=P1'>Cuentas</a></li>
+                    <ul>
+                    <li><a href='index.php?sel=P1'>Cuentas por sucursal</a></li>
+                    </ul>               
+                <li><a href='index.php?sel=CO1'>Consignaciones</a></li>
                 <li><a href=#>Retiros</a></li>
                 <li><a href='index.php?sel=CU1'>Transferencias</a></li>
                 <li><a href='index.php?sel=CU1'>Sobregiros</a></li>

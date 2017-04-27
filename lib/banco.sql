@@ -32,10 +32,11 @@ id_sucursal int(15) NOT NULL
 );
 
 CREATE TABLE cuenta(
-id_cuenta int(4) PRIMARY KEY NOT NULL,
+id_cuenta int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipo varchar(2) NOT NULL,
-fecha_crea 
+fecha_crea timestamp DEFAULT current_timestamp,
 saldo double(10,2),
+estado varchar(2) NOT NULL,
 documento int(15) NOT NULL,
 id_sucursal int(4) NOT NULL
 );
@@ -48,7 +49,7 @@ cuota double(10,2)
 );
 
 CREATE TABLE sucursal(
-id_sucursal int(4) PRIMARY KEY NOT NULL,
+id_sucursal int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL ,
 nombre varchar(50) NOT NULL,
 direccion varchar(30) NOT NULL,
 telefono varchar(15) NOT NULL,
@@ -56,10 +57,10 @@ ciudad varchar(50) NOT NULL
 );
 
 CREATE TABLE reg_tran(
-id_registro int(4) PRIMARY KEY NOT NULL,
+id_registro int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 cantidad double(10,2) NOT NULL,
 cuenta int(15),
-fecha 
+fecha timestamp DEFAULT current_timestamp,
 id_transaccion int(4) NOT NULL,
 id_cuenta int(15) NOT NULL
 );
@@ -79,6 +80,16 @@ INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (123,
 
 INSERT INTO funcionario (documento, nombre, email, telefono, id_sucursal) VALUES (666, 'Ana Herrera', 'ana@gmail.com', '675665', 1);
 
-INSERT INTO sucursal (id_sucursal, nombre, direccion, telefono, ciudad) VALUES (1, 'Centro', 'Calle 5 13-9', '648823', 'Cali');
-INSERT INTO sucursal (id_sucursal, nombre, direccion, telefono, ciudad) VALUES (2, 'Ciudad Jardin', 'Calle 5 124-31', '787882', 'Cali');
+INSERT INTO sucursal (nombre, direccion, telefono, ciudad) VALUES ('Centro', 'Calle 5 13-9', '648823', 'Cali');
+INSERT INTO sucursal (nombre, direccion, telefono, ciudad) VALUES ('Ciudad Jardin', 'Calle 5 124-31', '787882', 'Cali');
+
+INSERT INTO cuenta (tipo, estado, saldo, documento, id_sucursal) VALUES ('A', 'A', 1000000, 123, 2);
+
+INSERT INTO transaccion (id_transaccion, tipo) VALUES (1, 'C');
+INSERT INTO transaccion (id_transaccion, tipo) VALUES (2, 'R');
+INSERT INTO transaccion (id_transaccion, tipo) VALUES (3, 'T');
+INSERT INTO transaccion (id_transaccion, tipo) VALUES (4, 'S');
+
+SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento, p.nombre as person, s.nombre 
+FROM cuenta c , cliente p , sucursal s  WHERE c.documento = p.documento and c.id_sucursal = s.id_sucursal;
 

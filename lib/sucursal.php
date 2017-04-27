@@ -50,7 +50,7 @@ class Sucursal {
         $this->ciudad = $ciudad;
     }
 
-    function getEmail( ) {
+    function getCiudad( ) {
         return $this->ciudad;
     }
 
@@ -86,8 +86,7 @@ class Sucursal {
     */
 
     function insertar( ) {
-        $this->con->sql= "INSERT INTO sucursal (id_sucursal, nombre, direccion, telefono, ciudad) VALUES (
-                                                     ".$this->getId_sucursal().",
+        $this->con->sql= "INSERT INTO sucursal (nombre, direccion, telefono, ciudad) VALUES (
                                                      '".$this->getNombre()."',
                                                      '".$this->getDireccion()."',
                                                      '".$this->getTelefono()."',

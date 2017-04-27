@@ -67,6 +67,7 @@
                     print "<td>".$row['direccion']."</td>";
                     print "<td>".$row['telefono']."</td>";
                     print "<td>".$row['ciudad']."</td>";
+                    print "<td><a href='index.php?sel=P8&"."id_sucursal=".$row['id_sucursal']."'>Ver Cuentas</a></td>";
                     print "<td><a href='index.php?sel=S5&"."id_sucursal=".$row['id_sucursal']."'>Editar</a></td>";
                     print "<td><a href='index.php?sel=S4&"."id_sucursal=".$row['id_sucursal']."'>Eliminar</a></td>";
                     print "</tr>";
