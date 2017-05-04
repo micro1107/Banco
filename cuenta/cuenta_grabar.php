@@ -22,8 +22,10 @@
                 $r = new Registro();
                 $r->setCantidad($_POST['txtSaldo']);
                 $r->setId_transaccion(1);
-                $r->setId_cuenta($c->row['id_cuenta']);
+                $r->setId_cuenta($c->getId_cuenta());
                 $r->insertarConsignacion();
+
+                print $c->getId_cuenta();
             
                 echo "Cuenta ".$_POST['txtDocumento']." registrada correctamente";
             ?>

@@ -53,7 +53,7 @@ else {
 <div id="bunker">
 		<div id="cabecera"> 
         <?php print "<p> Usuario logeado: ".$_SESSION['SES_USUARIO'].", ID ROL = ".$_SESSION['SES_ID_ROL']."   --  <a href='index.php?p=logout'>Logout</a> </p>"; ?> 
-        <img src="img/logo.png" width="100px" height="100px" alt="Logo" >
+        <img src="img/logo.png" width="100px" height="100px" alt="Logo">
         <h1>Banco El Ahorro</h1>
         </div>
 		<div id="navegacion"> Navegacion </div>
@@ -142,6 +142,22 @@ else {
                                     case 'P7'  : include('cuenta/cuenta_bloquear.php');  
                                                 break;
                                     case 'P8'  : include('cuenta/cuenta_sucursal.php');
+                                                break;
+                                    case 'P9'  : include('cuenta/cuenta_consignar.php');
+                                                break;
+                                    case 'P10'  : include('cuenta/cuenta_retirar.php');
+                                                break;
+                                    case 'P11'  : include('cuenta/cuenta_transferir.php');
+                                                break;
+                                    case 'P12'  : include('cuenta/cuenta_sobregirar.php');
+                                                break;
+                                    case 'P13'  : include('cuenta/cuenta_tranzar.php');
+                                                break;
+
+
+                                    case 'CO1'   : include ('registro/registro_consignacion.php');
+                                                break;
+                                    case 'RE1'  : include('cuenta/cuenta_formulario.php');
                                                 break;
 
                                     } 

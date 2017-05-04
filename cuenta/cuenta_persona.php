@@ -92,7 +92,10 @@
                     print "<td>".$estado."</td>";
                     print "<td>".$row['saldo']."</td>";
                     print "<td>".$row['nombre']."</td>";
-                    print "<td>".$row['fecha_crea']."</td>";                    
+                    print "<td>".$row['fecha_crea']."</td>";
+                    print "<td><a href='index.php?sel=P9&"."id_cuenta=".$row['id_cuenta']."'>Consignar</a></td>";
+                    print "<td><a href='index.php?sel=P10&"."id_cuenta=".$row['id_cuenta']."'>Retirar</a></td>";
+                    print "<td><a href='index.php?sel=P11&"."id_cuenta=".$row['id_cuenta']."'>Transferir</a></td>";                                        
                     print "<td><a href='index.php?sel=P7&"."id_cuenta=".$row['id_cuenta']."'>Bloquear/Activar</a></td>";
                     print "</tr>";
                 }

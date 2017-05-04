@@ -85,7 +85,23 @@ class Registro {
         $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, id_cuenta) VALUES (
                                                      ".$this->getCantidad().",                                                    
                                                      ".$this->getId_transaccion().",
-                                                     ".$this->getId_cuenta().")";                                                  
+                                                     ".$this->getId_cuenta().")";
+
+        $this->con->conectarse();
+        $this->con->actualizar();
+        $this->con->desconectarse();                                                   
+
+    }
+
+    function insertarRetiro( ) {
+        $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, id_cuenta) VALUES (
+                                                     ".$this->getCantidad().",                                                    
+                                                     ".$this->getId_transaccion().",
+                                                     ".$this->getId_cuenta().")";
+
+        $this->con->conectarse();
+        $this->con->actualizar();
+        $this->con->desconectarse();                                                   
 
     }
 

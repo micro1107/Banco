@@ -172,10 +172,12 @@ class Cuenta {
       $this->documento = $documento;
       $this->con->conectarse();
       $this->con->sql = "SELECT MAX(id_cuenta) as id_cuenta FROM cuenta WHERE documento =".$this->documento."";
-
+      
       $this->con->consultar();
-      $this->lista = $this->con->rtaSql;
-      $this->numReg = $this->con->numReg;
+      $this->numReg=$this->con->numReg;
+      if ($this->con->numReg > 0) {
+         $this->id_cuenta = mysql_result($this->con->rtaSql,0,"id_cuenta");
+       }
       $this->con->desconectarse();
    }
 
