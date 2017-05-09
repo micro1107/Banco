@@ -69,12 +69,14 @@
                     print "<td>".$row['direccion']."</td>";
                     print "<td>".$row['telefono']."</td>";
                     print "<td><a href='index.php?sel=P5&"."documento=".$row['documento']."'>Ver Cuentas</a></td>";
+                    print "<td><a href='index.php?sel=RE2&"."documento=".$row['documento']."'>Ver Movimientos</a></td>";
                     print "<td><a href='index.php?sel=C5&"."documento=".$row['documento']."'>Editar</a></td>";
                     print "<td><a href='index.php?sel=C4&"."documento=".$row['documento']."'>Eliminar</a></td>";
                     print "</tr>";
                 }
             ?>
             <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
+            <tr><td colspan="5"><input name="btnImprimir" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=PDF2';" value="Imprimir"></td></tr>
         </table>
         </form>
 </body>

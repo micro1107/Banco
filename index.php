@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lalezar" rel="stylesheet">
 </head>
 <body>
-	<?php
+<?php
+
 @session_start();
 
 if ( $_REQUEST['submit'] ) {
@@ -18,12 +19,14 @@ if ( $_REQUEST['submit'] ) {
         include("lib/usuario.php");
         
         $usr = new Usuario();
-        
+        $usr->consultar($_POST['txtLogin']);
+        $rol = $usr->getId_rol();
+
         if ( $usr->validar( $_POST['txtLogin'], $_POST['txtPassw']) == 1 ) {
         
-           $_SESSION['SES_USUARIO'] = $usr->login;
+           $_SESSION['SES_USUARIO'] = $_POST['txtLogin'];
            session_register($_SESSION['SES_USUARIO']);
-           $_SESSION['SES_ID_ROL'] = $usr->id_rol;
+           $_SESSION['SES_ID_ROL'] = $rol;
            session_register($_SESSION['SES_ID_ROL']);
            
             //print "<meta http-equiv='refresh' content='1;URL=index.php'>";
@@ -51,7 +54,7 @@ else {
 ?>
 
 <div id="bunker">
-		<div id="cabecera"> 
+		<div id="cabecera">
         <?php print "<p> Usuario logeado: ".$_SESSION['SES_USUARIO'].", ID ROL = ".$_SESSION['SES_ID_ROL']."   --  <a href='index.php?p=logout'>Logout</a> </p>"; ?> 
         <img src="img/logo.png" width="100px" height="100px" alt="Logo">
         <h1>Banco El Ahorro</h1>
@@ -157,9 +160,21 @@ else {
 
                                     case 'CO1'   : include ('registro/registro_consignacion.php');
                                                 break;
-                                    case 'RE1'  : include('cuenta/cuenta_formulario.php');
+                                    case 'RE1'  : include('registro/registro_retiro.php');
+                                                break;
+                                    case 'SO1'  : include('registro/registro_sobregiro.php');
+                                                break;
+                                    case 'RE2'  : include('registro/registro_persona.php');
+                                                break;
+                                    
+                                    case 'TOP1'  : include('cuenta/cuenta_top.php');
                                                 break;
 
+                                    case 'PDF1'  : include('cuenta/cuenta_top_pdf.php');
+                                                break;
+
+                                    case 'PDF2'  : include('cliente/cliente_listar_pdf.php');
+                                                break;
                                     } 
                 ?>
             </div>

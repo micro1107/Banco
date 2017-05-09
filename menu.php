@@ -23,9 +23,10 @@
                     <li><a href='index.php?sel=P1'>Cuentas por sucursal</a></li>
                     </ul>               
                 <li><a href='index.php?sel=CO1'>Consignaciones</a></li>
-                <li><a href=#>Retiros</a></li>
+                <li><a href='index.php?sel=RE1'>Retiros</a></li>
                 <li><a href='index.php?sel=CU1'>Transferencias</a></li>
-                <li><a href='index.php?sel=CU1'>Sobregiros</a></li>
+                <li><a href='index.php?sel=SO1'>Sobregiros</a></li>
+                <li><a href='index.php?sel=TOP1'>Top 10 Cuentas</a></li>
             </ul>
         </li>
     </nav>                                                          

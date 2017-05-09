@@ -168,6 +168,18 @@ class Cuenta {
       $this->con->desconectarse();
    }
 
+   function listarTop( ) {
+      $this->con->conectarse();
+      $this->con->sql = "SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento,  ".
+                "p.nombre as person, s.nombre ".
+                "FROM cuenta c , cliente p , sucursal s  WHERE c.documento = p.documento  and c.id_sucursal = s.id_sucursal and c.estado = 'A' ORDER BY c.saldo DESC";
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
+
    function consultarUltimo($documento) {
       $this->documento = $documento;
       $this->con->conectarse();

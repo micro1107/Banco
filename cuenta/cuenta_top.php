@@ -44,27 +44,24 @@
     </style>
 </head>
 <body>
-    <?php 
-        include("lib/config.php");
-        include("lib/mysql_lib.php");
-        include("lib/cuenta.php");
-        include("lib/cliente.php");
-
-        $p = new Cliente();
-        $p->consultar($_GET['documento']);
-    
-    print "<h1>Cuentas de ". $p->getNombre() ."</h1>";
-	?>
-    <form name="index" action="index.php?sel=P2">
+    <h1>Top 10 Cuentas</h1>
+	<form name="index" action="index.php?sel=PDF1">
         <table border="1" class="tabla">
             <tr class="titulo">
-            <td>ID_CUENTA</td><td>TIPO</td><td>TITULAR</td><td>ESTADO</td><td>SALDO</td><td>SUCURSAL</td><td>FECHA_CREACIÓN</td>
+            <td>TOP</td><td>ID_CUENTA</td><td>TIPO</td><td>TITULAR</td><td>ESTADO</td><td>SALDO</td><td>SUCURSAL</td><td>FECHA_CREACIÓN</td>
             </tr>
             <?php
+                include("lib/config.php");
+                include("lib/mysql_lib.php");
+                include("lib/cuenta.php");
+                
                 
                 $c = new Cuenta();
-                $c->listarPorPersona($_GET['documento']);
+                $c->listarTop();
                 $result = $c->lista;
+                $top = 1;
+
+                if ($top < 10){
 
                 while ($row = mysql_fetch_array($result)) {
 
@@ -86,6 +83,7 @@
                     }
 
                     print "<tr>";
+                    print "<td>".$top."</td>";
                     print "<td>".$row['id_cuenta']."</td>";
                     print "<td>".$tipo."</td>";
                     print "<td>".$row['person']."</td>";
@@ -93,27 +91,12 @@
                     print "<td>".$row['saldo']."</td>";
                     print "<td>".$row['nombre']."</td>";
                     print "<td>".$row['fecha_crea']."</td>";
-                    print "<td><a href='index.php?sel=P9&"."id_cuenta=".$row['id_cuenta']."'>Consignar</a></td>";
-                    if ($estado !== "Bloqueada" ){                    
-                    print "<td><a href='index.php?sel=P10&"."id_cuenta=".$row['id_cuenta']."'>Retirar</a></td>";
-                    print "<td><a href='index.php?sel=P11&"."id_cuenta=".$row['id_cuenta']."'>Transferir</a></td>";
-                        if ($tipo == "Corriente"){
-                        print "<td><a href='index.php?sel=P12&"."id_cuenta=".$row['id_cuenta']."'>Sobregirar</a></td>";
-                        } 
-                        else{
-                            print "<td></td>";
-                        }
-                    } 
-                    else{
-                        print "<td></td>";
-                        print "<td></td>";
-                        print "<td></td>";
-                    }                      
-                    print "<td><a href='index.php?sel=P7&"."id_cuenta=".$row['id_cuenta']."'>Bloquear/Activar</a></td>";
                     print "</tr>";
+                    $top = $top + 1;
                     } 
+                }
             ?>
-            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=P2';" value="Nuevo"></td></tr>
+            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="Imprimir" onclick="javascript:window.location='index.php?sel=PDF1';" ></td></tr>
         </table>
         </form>
 </body>

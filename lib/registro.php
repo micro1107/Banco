@@ -81,11 +81,25 @@ class Registro {
     }
     
 
-    function insertarConsignacion( ) {
+    function insertarConsignacion($email,$nombre) {
+        $this->email = $email;
+        $this->nombre = $nombre;
         $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, id_cuenta) VALUES (
                                                      ".$this->getCantidad().",                                                    
                                                      ".$this->getId_transaccion().",
                                                      ".$this->getId_cuenta().")";
+
+        $mail = " ".$this->nombre." , se han consignado ".$this->getCantidad() . " a su cuenta";
+        //Titulo
+        $titulo = "Consignacion a su cuenta";
+        //cabecera
+        $headers = "MIME-Version: 1.0\r\n"; 
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+        //dirección del remitente 
+        $headers .= "From:Banco El Ahorro<financiero@elahorro.com>\r\n";
+        //Enviamos el mensaje a tu_dirección_email 
+
+        $bool = mail($this->email,$titulo,$mail,$headers);
 
         $this->con->conectarse();
         $this->con->actualizar();
@@ -93,12 +107,52 @@ class Registro {
 
     }
 
-    function insertarRetiro( ) {
+    function insertarRetiro( $email,$nombre) {
+        $this->email = $email;
+        $this->nombre = $nombre;
         $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, id_cuenta) VALUES (
                                                      ".$this->getCantidad().",                                                    
                                                      ".$this->getId_transaccion().",
                                                      ".$this->getId_cuenta().")";
 
+        $mail = " ".$this->nombre." , se han retirado ".$this->getCantidad() . " de su cuenta";
+        //Titulo
+        $titulo = "Retiro a su cuenta";
+        //cabecera
+        $headers = "MIME-Version: 1.0\r\n"; 
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+        //dirección del remitente 
+        $headers .= "From:Banco El Ahorro<lucasamauri@gmail.com>\r\n";
+        //Enviamos el mensaje a tu_dirección_email 
+
+        $bool = mail($this->email,$titulo,$mail,$headers);
+                                                     
+        $this->con->conectarse();
+        $this->con->actualizar();
+        $this->con->desconectarse();                                                   
+
+    }
+
+    function insertarSobregiro( $email,$nombre) {
+        $this->email = $email;  
+        $this->nombre = $nombre;
+        $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, id_cuenta) VALUES (
+                                                     ".$this->getCantidad().",                                                    
+                                                     ".$this->getId_transaccion().",
+                                                     ".$this->getId_cuenta().")";
+        
+        $mail = " ".$this->nombre." , se ha sobregirado su cuenta por un valor de ".$this->getCantidad() . " ";
+        //Titulo
+        $titulo = "Sobregiro a su cuenta";
+        //cabecera
+        $headers = "MIME-Version: 1.0\r\n"; 
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+        //dirección del remitente 
+        $headers .= "From:Banco El Ahorro<lucasamauri@gmail.com>\r\n";
+        //Enviamos el mensaje a tu_dirección_email 
+
+        $bool = mail($this->email,$titulo,$mail,$headers);
+                                                     
         $this->con->conectarse();
         $this->con->actualizar();
         $this->con->desconectarse();                                                   
@@ -118,6 +172,7 @@ class Registro {
         $this->con->actualizar();
         $this->con->desconectarse(); 
     }
+
     
    /* function actualizar( ) {
         $this->con->sql= "UPDATE rol  
@@ -158,13 +213,48 @@ class Registro {
   function listarConsignaciones( ) {
       $this->con->conectarse();
       $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, r.fecha, p.nombre ".
-                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento and c.id_cuenta = r.id_cuenta ";
+                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.id_cuenta AND r.id_transaccion = 1 ";
 
       $this->con->consultar();
       $this->lista = $this->con->rtaSql;
       $this->numReg = $this->con->numReg;
       $this->con->desconectarse();
    }
+
+   function listarRetiros( ) {
+      $this->con->conectarse();
+      $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, r.fecha, p.nombre ".
+                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.id_cuenta AND r.id_transaccion = 2 ";
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
+
+   function listarSobregiros( ) {
+      $this->con->conectarse();
+      $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, r.fecha, p.nombre, p.telefono, p.email, c.saldo ".
+                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.id_cuenta AND r.id_transaccion = 4 ";
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
+
+ function listarMovimientosPersona($documento) {
+      $this->documento = $documento;
+      $this->con->conectarse();
+      $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, r.fecha, p.nombre, r.id_transaccion ".
+                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.id_cuenta AND p.documento =" .$this->documento. " ORDER BY r.fecha";
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
+  
 }
 
 ?>

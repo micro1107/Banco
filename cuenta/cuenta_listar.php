@@ -87,12 +87,26 @@
                     print "<td>".$row['saldo']."</td>";
                     print "<td>".$row['nombre']."</td>";
                     print "<td>".$row['fecha_crea']."</td>";
+                    if ($estado !== "Bloqueada" ){
                     print "<td><a href='index.php?sel=P9&"."id_cuenta=".$row['id_cuenta']."'>Consignar</a></td>";
                     print "<td><a href='index.php?sel=P10&"."id_cuenta=".$row['id_cuenta']."'>Retirar</a></td>";
-                    print "<td><a href='index.php?sel=P11&"."id_cuenta=".$row['id_cuenta']."'>Transferir</a></td>";                    
+                    print "<td><a href='index.php?sel=P11&"."id_cuenta=".$row['id_cuenta']."'>Transferir</a></td>";
+                        if ($tipo == "Corriente"){
+                        print "<td><a href='index.php?sel=P12&"."id_cuenta=".$row['id_cuenta']."'>Sobregirar</a></td>";
+                        } 
+                        else{
+                            print "<td></td>";
+                        }
+                    } 
+                    else{
+                        print "<td></td>";
+                        print "<td></td>";
+                        print "<td></td>";
+                        print "<td></td>";
+                    }                      
                     print "<td><a href='index.php?sel=P7&"."id_cuenta=".$row['id_cuenta']."'>Bloquear/Activar</a></td>";
                     print "</tr>";
-                }
+                    } 
             ?>
             <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=P2';" value="Nuevo"></td></tr>
         </table>

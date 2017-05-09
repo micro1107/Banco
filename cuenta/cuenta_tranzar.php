@@ -5,9 +5,15 @@
                 include("lib/mysql_lib.php");
                 include("lib/cuenta.php");
                 include("lib/registro.php");
+                include("lib/cliente.php");
                                 
                 $c = new Cuenta();
                 $c->consultar($_POST['txtId_cuenta']);
+
+                $p = new Cliente();
+                $p->consultar($c->getDocumento());
+                $email = $p->getEmail();
+                $nombre = $p->getNombre();
 
                 $tipo = $_POST['txtTipo'];
                 $monto = $_POST['txtMonto'];
@@ -17,6 +23,7 @@
                         $saldoNuevo = $saldoViejo + $monto;
                         $c->setId_cuenta($_POST['txtId_cuenta']);
                         $c->setSaldo($saldoNuevo);
+                        $c->setEstado('A');
                         $c->actualizar(); 
                         break;
                     case '2':
@@ -35,10 +42,16 @@
                         $c->setId_cuenta($_POST['txtId_cuenta']);
                         $c->setSaldo($saldoNuevo);
                         $c->actualizar(); 
-                        break;                   
-                }
+                        break;  
 
-                  
+                    case '4':
+                        $saldoNuevo = $saldoViejo - $monto;
+                        $c->setId_cuenta($_POST['txtId_cuenta']);
+                        $c->setSaldo($saldoNuevo);
+                        $c->setEstado('B');
+                        $c->actualizar(); 
+                        break;                
+                }
 
                 $r = new Registro();
                 $r->setCantidad($monto);
@@ -46,12 +59,21 @@
                 $r->setId_cuenta($_POST['txtId_cuenta']);
 
                 switch ($tipo) {
-                    case 1:
-                        $r->insertarConsignacion();
+                    case '1':
+                        $r->insertarConsignacion($email,$nombre);
                         break;
-                    case 2:
-                        $r->insertarRetiro();
+                    case '2':
+                        $r->insertarRetiro($email,$nombre);
                         break;
+
+                    case '3':
+                        $r->insertarConsignacion($email,$nombre);
+                        break;
+
+                    case '4':
+                        $r->insertarSobregiro($email,$nombre);
+                        break;
+
                 }
             
                 echo "Transacción a cliente ".$_POST['txtDocumento']." registrada correctamente en la cuenta".$_POST['txtId_cuenta'];
