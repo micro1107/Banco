@@ -42,10 +42,18 @@
     }
 
     </style>
+    <script>
+        function abrirPdf(){
+
+                document.pdf.action = "cliente/cliente_listar_pdf.php";
+                document.pdf.target = "cliente_listar_pdf";
+                document.pdf.submit();
+        }
+    </script>
 </head>
 <body>
     <h1>Clientes</h1>
-	<form name="index" action="index.php?sel=C2">
+	<form name="pdf" action="index.php?sel=C2">
         <table border="1" class="tabla">
             <tr class="titulo">
             <td>DOCUMENTO</td><td>NOMBRE</td><td>EMAIL</td><td>DIRECCION</td><td>TELEFONO</td>
@@ -76,7 +84,7 @@
                 }
             ?>
             <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
-            <tr><td colspan="5"><input name="btnImprimir" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=PDF2';" value="Imprimir"></td></tr>
+            <tr><td colspan="5"><input name="btnImprimir" type="button" class="botonNuevo" onclick="javascript:abrirPdf();" value="Imprimir"></td></tr>
         </table>
         </form>
 </body>

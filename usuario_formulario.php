@@ -18,18 +18,36 @@
     </style>
 	<script>
 		function validar() {
-		    var txtPwd, txtLogin, txtRol;
+		    var txtPwd, txtRol, txtDocumento;
 		    
-		    if (document.usuario_grabar.txtLogin=="" || document.usuario_grabar.txtLogin== null){
+            txtDocumento = document.usuario_grabar.txtDocumento.value;
+
+		    if (document.usuario_grabar.txtLogin.value=="" || document.usuario_grabar.txtLogin.value==null){
 		        alert("Error: Debe digitar un valor para el Login");
 		        document.usuario_grabar.txtLogin.focus();
 		        return;
 		    }
+            else if (document.usuario_grabar.txtPwd.value=="" || document.usuario_grabar.txtPwd.value==null){
+                alert("Error: Debe digitar un valor para la contraseña");
+                document.usuario_grabar.txtPwd.focus();
+                return;
+            }
+            else if (document.usuario_grabar.txtDocumento.value=="" || document.usuario_grabar.txtDocumento.value==null){
+                alert("Error: Debe digitar un valor para el documento");
+                document.usuario_grabar.txtDocumento.focus();
+                return;
+            }
+            else if (isNaN(txtDocumento)){
+                alert("Error: Debe digitar un valor válido para el documento");
+                document.usuario_grabar.txtDocumento.focus();
+                return;
+            }
+		    else {
+                document.usuario_grabar.submit();
+            }
+
+        }
 		    
-		    else{
-		        document.usuario_grabar.submit();
-		    }
-		}
 	</script>
 </head>
 <body>

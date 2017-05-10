@@ -18,10 +18,60 @@
     </style>
 	<script>
 		function validar() {
-		    var txtPwd, txtLogin, txtRol;
-		    
+
+            var txtNombre txtEmail, txtDocumento, txtDireccion, txtTelefono;
+
+            txtNombre = document.cliente_grabar.txtNombre.value;
+            txtEmail = document.cliente_grabar.txtEmail.value;
+            txtDocumento = document.cliente_grabar.txtDocumento.value;
+            txtDireccion = document.cliente_grabar.txtDireccion.value;
+            txtTelefono = document.cliente_grabar.txtTelefono.value;
+
+            if (document.cliente_grabar.txtDocumento.value=="" || document.cliente_grabar.txtDocumento.value==null){
+                alert("Error: Debe digitar un valor para el documento");
+                document.cliente_grabar.txtDocumento.focus();
+                return;
+            }
+            else if (isNaN(txtDocumento)){
+                alert("Error: Debe digitar un valor válido para el documento");
+                document.cliente_grabar.txtDocumento.focus();
+                return;
+            }
+
+            else if (document.cliente_grabar.txtNombre.value=="" || document.cliente_grabar.txtNombre.value==null){
+                alert("Error: Debe digitar un nombre");
+                document.usuario_grabar.txtNombre.focus();
+                return;
+            }
+            else if (!isNaN(txtNombre)){
+                alert("Error: Debe digitar un nombre válido");
+                document.cliente_grabar.txtNombre.focus();
+                return;
+            }
+            
+            else if (document.cliente_grabar.txtEmail.value=="" || document.cliente_grabar.txtEmail.value==null){
+                alert("Error: Debe digitar un email");
+                document.cliente_grabar.txtNombre.focus();
+                return;
+            }
+
+
+            else if (txtDireccion=="" || txtDireccion==null){
+                alert("Error: Debe digitar una dirección");
+                document.cliente_grabar.txtNombre.focus();
+                return;
+            }
+
+            else if (txtTelefono=="" || txtTelefono==null){
+                alert("Error: Debe digitar un nombre");
+                document.cliente_grabar.txtNombre.focus();
+                return;
+            }
+            
+
+		    else{
 		    document.cliente_grabar.submit();
-		    
+		    }
 		}
 	</script>
 </head>

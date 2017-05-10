@@ -3,7 +3,7 @@
 include("lib/config.php");
 include("lib/mysql_lib.php");
 include("lib/cliente.php");
-include('lib/class.ezpdf.php');
+include("lib/class.ezpdf.php");
 //include ('./lib/Cezpdf.php');
     
 
@@ -43,7 +43,7 @@ $pdf->selectFont('lib/fonts/Helvetica.afm');
 
         $titulo=array ('DATO1'=>'<b>DOCUMENTO</b>','DATO2'=>'<b>NOMBRE</b>','DATO3'=>'<b>EMAIL</b>','DATO4'=>'<b>DIRECCION</b>','DATO5'=>'<b>TELEFONO</b>');  
 
-	$cu= new Cliente();
+	$cu = new Cliente();
 	$cu->listar( );
         $result = $cu->lista;
 
