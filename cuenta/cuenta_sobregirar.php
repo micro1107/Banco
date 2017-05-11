@@ -17,11 +17,33 @@
     }
     </style>
     <script>
-        function validar() {
-            var txtPwd, txtLogin, txtRol;
-            
-            document.cuenta_consignar.submit();
-            
+       function validar() {
+
+            var txtMonto, txtSaldo, txtMax;
+
+            txtMonto = document.cuenta_consignar.txtMonto.value;
+            txtSaldo = document.cuenta_consignar.txtSaldo.value;
+            txtMax = document.cuenta_consignar.txtMax.value;
+
+
+            if (txtMonto=="" || txtMonto==null){
+                alert("Error: Debe digitar un valor a sobregirar");
+                document.cuenta_consignar.txtMonto.focus();
+                return;
+            }
+                else if (isNaN(txtMonto)){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
+                else if (txtMonto <= txtSaldo || txtMonto > txtMax){
+                    alert("El monto no corresponde a un sobregiro válido");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+            }
+            else{
+                document.cuenta_consignar.submit();
+                }
         }
     </script>
 </head>
@@ -53,6 +75,7 @@
                     print "<td><input name=txtSaldo type=text value = ".$cu->getSaldo()." readonly></td>";
                     $max = ($cu->getSaldo())*0.50;
                     $max = $max + $cu->getSaldo();
+                    print "<td><input name=txtMax type=hidden value = ".$max." readonly ></td>"
                     ?>
                 </tr>
                 <tr>

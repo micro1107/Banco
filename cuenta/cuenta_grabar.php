@@ -5,9 +5,14 @@
                 include("lib/mysql_lib.php");
                 include("lib/cuenta.php");
                 include("lib/registro.php");
-                                
+                include("lib/cliente.php");
+
                 $c = new Cuenta();
 
+                $p = new Cliente();
+                $p->consultar($_POST['txtDocumento']);
+                $email = $p->getEmail();
+                $nombre = $p->getNombre();
                
                 $c->setDocumento($_POST['txtDocumento']);
                 $c->setTipo($_POST['txtTipo']);
@@ -23,7 +28,7 @@
                 $r->setCantidad($_POST['txtSaldo']);
                 $r->setId_transaccion(1);
                 $r->setId_cuenta($c->getId_cuenta());
-                $r->insertarConsignacion();
+                $r->insertarConsignacion($email,$nombre);
 
                 print $c->getId_cuenta();
             

@@ -17,12 +17,67 @@
     }
     </style>
     <script>
-        function validar() {
-            var txtPwd, txtLogin, txtRol;
+         function validar() {
+
+            var txtNombre, txtEmail, txtDocumento, txtTelefono;
+
+            txtNombre = document.funcionario_grabar.txtNombre.value;
+            txtEmail = document.funcionario_grabar.txtEmail.value;
+            txtDocumento = document.funcionario_grabar.txtDocumento.value;
+            txtTelefono = document.funcionario_grabar.txtTelefono.value;
+
+            if (txtDocumento=="" || txtDocumento==null){
+                alert("Error: Debe digitar un valor para el documento");
+                document.funcionario_grabar.txtDocumento.focus();
+                return;
+            }
+                else if (isNaN(txtDocumento)){
+                    alert("Error: Debe digitar un valor válido para el documento");
+                    document.funcionario_grabar.txtDocumento.focus();
+                    return;
+                }
+
+            else if (document.funcionario_grabar.txtNombre.value=="" || document.funcionario_grabar.txtNombre.value==null){
+                alert("Error: Debe digitar un nombre");
+                document.usuario_grabar.txtNombre.focus();
+                return;
+            }
+                else if (!isNaN(txtNombre)){
+                    alert("Error: Debe digitar un nombre válido");
+                    document.funcionario_grabar.txtNombre.focus();
+                    return;
+                }
             
+            else if (document.funcionario_grabar.txtEmail.value=="" || document.funcionario_grabar.txtEmail.value==null){
+                alert("Error: Debe digitar un email");
+                document.funcionario_grabar.txtEmail.focus();
+                return;
+            }
+            else if(!email(txtEmail)){
+                alert("Error: Debe digitar un email válido");
+                document.funcionario_grabar.txtEmail.focus();
+                return;
+            }
+
+            else if (txtTelefono=="" || txtTelefono==null){
+                alert("Error: Debe digitar un telefono");
+                document.funcionario_grabar.txtTelefono.focus();
+                return;
+            }
+            
+            else{
             document.funcionario_grabar.submit();
-            
+            }
         }
+
+        function email(txtEmail){
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(txtEmail)){
+              return true;
+              } 
+              else {
+               return false;
+              }
+            }
     </script>
 </head>
 <body>

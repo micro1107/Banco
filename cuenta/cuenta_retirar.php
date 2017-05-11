@@ -17,11 +17,25 @@
     }
     </style>
     <script>
-        function validar() {
-            var txtPwd, txtLogin, txtRol;
-            
-            document.cuenta_consignar.submit();
-            
+       function validar() {
+
+            var txtMonto;
+
+            txtMonto = document.cuenta_consignar.txtMonto.value;
+
+            if (txtMonto=="" || txtMonto==null){
+                alert("Error: Debe digitar un valor");
+                document.cuenta_consignar.txtMonto.focus();
+                return;
+            }
+                else if (isNaN(txtMonto)){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
+            else{
+                document.cuenta_consignar.submit();
+                }
         }
     </script>
 </head>

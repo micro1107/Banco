@@ -18,10 +18,24 @@
     </style>
     <script>
         function validar() {
-            var txtPwd, txtLogin, txtRol;
-            
-            document.cuenta_grabar.submit();
-            
+
+            var txtSaldo;
+
+            txtSaldo = document.cuenta_grabar.txtSaldo.value;
+
+            if (txtSaldo=="" || txtSaldo==null){
+                alert("Error: Debe digitar una consignación inicial");
+                document.cuenta_grabar.txtSaldo.focus();
+                return;
+            }
+                else if (isNaN(txtSaldo)){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_grabar.txtSaldo.focus();
+                    return;
+                }
+            else{
+                document.cuenta_grabar.submit();
+                }
         }
     </script>
 </head>
@@ -76,7 +90,7 @@
                         </select></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="javascript:validar();"></td>
+                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="validar()"></td>
                 </tr>
             </table>
         </form>

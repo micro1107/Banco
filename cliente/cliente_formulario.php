@@ -16,10 +16,10 @@
         padding-left: 100px;
     }
     </style>
-	<script>
-		function validar() {
+	<script >
+	    function validar() {
 
-            var txtNombre txtEmail, txtDocumento, txtDireccion, txtTelefono;
+            var txtNombre, txtEmail, txtDocumento, txtDireccion, txtTelefono;
 
             txtNombre = document.cliente_grabar.txtNombre.value;
             txtEmail = document.cliente_grabar.txtEmail.value;
@@ -27,44 +27,48 @@
             txtDireccion = document.cliente_grabar.txtDireccion.value;
             txtTelefono = document.cliente_grabar.txtTelefono.value;
 
-            if (document.cliente_grabar.txtDocumento.value=="" || document.cliente_grabar.txtDocumento.value==null){
+            if (txtDocumento=="" || txtDocumento==null){
                 alert("Error: Debe digitar un valor para el documento");
                 document.cliente_grabar.txtDocumento.focus();
                 return;
             }
-            else if (isNaN(txtDocumento)){
-                alert("Error: Debe digitar un valor válido para el documento");
-                document.cliente_grabar.txtDocumento.focus();
-                return;
-            }
+                else if (isNaN(txtDocumento)){
+                    alert("Error: Debe digitar un valor válido para el documento");
+                    document.cliente_grabar.txtDocumento.focus();
+                    return;
+                }
 
             else if (document.cliente_grabar.txtNombre.value=="" || document.cliente_grabar.txtNombre.value==null){
                 alert("Error: Debe digitar un nombre");
                 document.usuario_grabar.txtNombre.focus();
                 return;
             }
-            else if (!isNaN(txtNombre)){
-                alert("Error: Debe digitar un nombre válido");
-                document.cliente_grabar.txtNombre.focus();
-                return;
-            }
+                else if (!isNaN(txtNombre)){
+                    alert("Error: Debe digitar un nombre válido");
+                    document.cliente_grabar.txtNombre.focus();
+                    return;
+                }
             
             else if (document.cliente_grabar.txtEmail.value=="" || document.cliente_grabar.txtEmail.value==null){
                 alert("Error: Debe digitar un email");
-                document.cliente_grabar.txtNombre.focus();
+                document.cliente_grabar.txtEmail.focus();
+                return;
+            }
+            else if(!email(txtEmail)){
+                alert("Error: Debe digitar un email válido");
+                document.cliente_grabar.txtEmail.focus();
                 return;
             }
 
-
             else if (txtDireccion=="" || txtDireccion==null){
                 alert("Error: Debe digitar una dirección");
-                document.cliente_grabar.txtNombre.focus();
+                document.cliente_grabar.txtDireccion.focus();
                 return;
             }
 
             else if (txtTelefono=="" || txtTelefono==null){
                 alert("Error: Debe digitar un nombre");
-                document.cliente_grabar.txtNombre.focus();
+                document.cliente_grabar.txtTelefono.focus();
                 return;
             }
             
@@ -73,6 +77,16 @@
 		    document.cliente_grabar.submit();
 		    }
 		}
+
+        function email(txtEmail){
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(txtEmail)){
+              return true;
+              } 
+              else {
+               return false;
+              }
+            }
+        
 	</script>
 </head>
 <body>
@@ -100,7 +114,7 @@
                     <td><input name="txtTelefono" type="text"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="javascript:validar();"></td>
+                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="validar()"></td>
                 </tr>
             </table>
         </form>
