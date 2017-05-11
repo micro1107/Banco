@@ -36,6 +36,11 @@
                     document.cuenta_consignar.txtMonto.focus();
                     return;
                 }
+                else if (txtMonto <= 0){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
                 else if (txtMonto <= txtSaldo || txtMonto > txtMax){
                     alert("El monto no corresponde a un sobregiro válido");
                     document.cuenta_consignar.txtMonto.focus();

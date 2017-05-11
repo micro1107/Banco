@@ -33,6 +33,11 @@
                     document.cuenta_grabar.txtSaldo.focus();
                     return;
                 }
+                else if (txtSaldo <= 0){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_grabar.txtMonto.focus();
+                    return;
+                }
             else{
                 document.cuenta_grabar.submit();
                 }

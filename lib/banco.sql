@@ -93,3 +93,5 @@ INSERT INTO transaccion (id_transaccion, tipo) VALUES (4, 'S');
 SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento, p.nombre as person, s.nombre 
 FROM cuenta c , cliente p , sucursal s  WHERE c.documento = p.documento and c.id_sucursal = s.id_sucursal order by c.fecha_crea;
 
+SELECT s.nombre, sum(r.cantidad) as total, c.id_sucursal
+FROM  cuenta c , sucursal s , reg_tran r WHERE r.id_cuenta = c.id_cuenta AND c.id_sucursal = s.id_sucursal GROUP BY s.id_sucursal ORDER BY total desc;

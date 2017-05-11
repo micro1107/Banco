@@ -4,7 +4,7 @@ include("lib/config.php");
 include("lib/mysql_lib.php");
 include("lib/cliente.php");
 include("lib/class.ezpdf.php");
-//include ('./lib/Cezpdf.php');
+//include('./lib/Cezpdf.php');
     
 
 $pdf = new Cezpdf('LETTER','portrait');   
@@ -50,7 +50,7 @@ $pdf->selectFont('lib/fonts/Helvetica.afm');
         $c=0;
 
         while($row = mysql_fetch_array($result)) {
-            
+        
                         $datos[$c++]=array ('DATO1'=>$row['documento'],'DATO2'=>$row['nombre'],'DATO3'=>$row['email'],'DATO4'=>$row['direccion'],'DATO5'=>$row['telefono']);
                   }
 

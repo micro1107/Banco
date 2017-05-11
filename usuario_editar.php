@@ -15,10 +15,42 @@
         padding-left: 100px;
     }
     </style>
+    <script>
+        function validar() {
+            var txtPwd, txtRol, txtDocumento;
+            
+            txtDocumento = document.usuario_grabar.txtDocumento.value;
+
+            if (document.usuario_grabar.txtLogin.value=="" || document.usuario_grabar.txtLogin.value==null){
+                alert("Error: Debe digitar un valor para el Login");
+                document.usuario_grabar.txtLogin.focus();
+                return;
+            }
+            else if (document.usuario_grabar.txtPwd.value=="" || document.usuario_grabar.txtPwd.value==null){
+                alert("Error: Debe digitar un valor para la contraseña");
+                document.usuario_grabar.txtPwd.focus();
+                return;
+            }
+            else if (document.usuario_grabar.txtDocumento.value=="" || document.usuario_grabar.txtDocumento.value==null){
+                alert("Error: Debe digitar un valor para el documento");
+                document.usuario_grabar.txtDocumento.focus();
+                return;
+            }
+            else if (isNaN(txtDocumento)){
+                alert("Error: Debe digitar un valor válido para el documento");
+                document.usuario_grabar.txtDocumento.focus();
+                return;
+            }
+            else {
+                document.usuario_grabar.submit();
+            }
+
+        }
+    </script>
 </head>
 <body>
     <h1>Editar Datos de Usuario</h1>
-	<form name ='usuario_editar' action=index.php?sel=U6 method='post'>
+	<form name ='usuario_grabar' action=index.php?sel=U6 method='post'>
         <table>
                 <tr>
                     <td>Login</td>
@@ -87,7 +119,7 @@
                     <td><input name="txtDocumento" type="text"  value = "<?php echo $p->getDocumento(); ?>" readonly></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="btnGuardar" type="submit" value="Guardar" onclick="javascript:validar();"></td>
+                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="javascript:validar();"></td>
                 </tr>
             </table>
         </form>

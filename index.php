@@ -66,7 +66,14 @@ else {
 
                                                     include('menu.php');
                                                 }
-                                                else{
+                                                elseif ($_SESSION['SES_ID_ROL']==2){
+                                                    include('menu2.php');
+                                                }
+                                                elseif ($_SESSION['SES_ID_ROL']==3){
+                                                    include('menu3.php');
+                                                }
+                                                else
+                                                {
                                                     include('menu.php');
                                                 }
                                         ?>
@@ -168,6 +175,9 @@ else {
                                                 break;
                                     
                                     case 'TOP1'  : include('cuenta/cuenta_top.php');
+                                                break;
+
+                                    case 'TOP2'  : include('cuenta/cuenta_top_sucursal.php');
                                                 break;
 
                                     case 'PDF1'  : include('cuenta/cuenta_top_pdf.php');

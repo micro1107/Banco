@@ -52,11 +52,11 @@
     </script>
 </head>
 <body>
-    <h1>Top 10 Cuentas</h1>
+    <h1>Top Sucursales</h1>
 	<form name="pdf" action="index.php?sel=PDF1">
         <table border="1" class="tabla">
             <tr class="titulo">
-            <td>TOP</td><td>ID_CUENTA</td><td>TIPO</td><td>TITULAR</td><td>ESTADO</td><td>SALDO</td><td>SUCURSAL</td><td>FECHA_CREACIÓN</td>
+            <td>TOP</td><td>NOMBRE</td><td>TOTAL</td>
             </tr>
             <?php
                 include("lib/config.php");
@@ -65,7 +65,7 @@
                 
                 
                 $c = new Cuenta();
-                $c->listarTop();
+                $c->listarTopSucursal();
                 $result = $c->lista;
                 $top = 1;
 
@@ -73,32 +73,11 @@
 
                 while ($row = mysql_fetch_array($result)) {
 
-                    switch ($row['tipo']) {
-                        case 'A':
-                            $tipo = "Ahorros";
-                            break;
-                        case 'C':
-                            $tipo = "Corriente";
-                            break;
-                    }
-                    switch ($row['estado']) {
-                        case 'A':
-                            $estado = "Activa";
-                            break;
-                        case 'B':
-                            $estado = "Bloqueada";
-                            break;    
-                    }
 
                     print "<tr>";
                     print "<td>".$top."</td>";
-                    print "<td>".$row['id_cuenta']."</td>";
-                    print "<td>".$tipo."</td>";
-                    print "<td>".$row['person']."</td>";
-                    print "<td>".$estado."</td>";
-                    print "<td>".$row['saldo']."</td>";
                     print "<td>".$row['nombre']."</td>";
-                    print "<td>".$row['fecha_crea']."</td>";
+                    print "<td>".$row['total']."</td>";
                     print "</tr>";
                     $top = $top + 1;
                     } 

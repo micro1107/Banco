@@ -33,6 +33,11 @@
                     document.cuenta_consignar.txtMonto.focus();
                     return;
                 }
+                else if (txtMonto <= 0){
+                    alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
             else{
                 document.cuenta_consignar.submit();
                 }

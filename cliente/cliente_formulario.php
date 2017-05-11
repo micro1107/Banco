@@ -67,7 +67,7 @@
             }
 
             else if (txtTelefono=="" || txtTelefono==null){
-                alert("Error: Debe digitar un nombre");
+                alert("Error: Debe digitar un telefono");
                 document.cliente_grabar.txtTelefono.focus();
                 return;
             }

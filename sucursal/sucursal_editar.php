@@ -15,10 +15,61 @@
         padding-left: 100px;
     }
     </style>
+    <script>
+        function validar() {
+
+            var txtNombre, txtCiudad, txtDireccion, txtTelefono;
+
+            txtNombre = document.sucursal_grabar.txtNombre.value;
+            txtCiudad = document.sucursal_grabar.txtCiudad.value;
+            txtDireccion = document.sucursal_grabar.txtDireccion.value;
+            txtTelefono = document.sucursal_grabar.txtTelefono.value;
+
+            if (txtCiudad=="" || txtCiudad==null){
+                alert("Error: Debe digitar un valor para la ciudad");
+                document.sucursal_grabar.txtCiudad.focus();
+                return;
+            }
+                else if (!isNaN(txtCiudad)){
+                    alert("Error: Debe digitar un valor válido para la ciudad");
+                    document.sucursal_grabar.txtCiudad.focus();
+                    return;
+                }
+
+            else if (document.sucursal_grabar.txtNombre.value=="" || document.sucursal_grabar.txtNombre.value==null){
+                alert("Error: Debe digitar un nombre");
+                document.usuario_grabar.txtNombre.focus();
+                return;
+            }
+                else if (!isNaN(txtNombre)){
+                    alert("Error: Debe digitar un nombre válido");
+                    document.sucursal_grabar.txtNombre.focus();
+                    return;
+                }
+            
+
+            else if (txtDireccion=="" || txtDireccion==null){
+                alert("Error: Debe digitar una dirección");
+                document.sucursal_grabar.txtDireccion.focus();
+                return;
+            }
+
+            else if (txtTelefono=="" || txtTelefono==null){
+                alert("Error: Debe digitar un nombre");
+                document.sucursal_grabar.txtTelefono.focus();
+                return;
+            }
+            
+
+            else{
+            document.sucursal_grabar.submit();
+            }
+        }
+    </script>
 </head>
 <body>
  <h1>Modificar Datos de Sucursal</h1>
-	<form name ='sucursal_editar' action=index.php?sel=S6 method='post'>
+	<form name ='sucursal_grabar' action=index.php?sel=S6 method='post'>
         <table>
                 <tr>
                     <td>Id_Sucursal</td>
@@ -52,7 +103,7 @@
                      <td><input name="txtCiudad" type="text"  value = "<?php echo $s->getCiudad(); ?>" ></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input name="btnGuardar" type="submit" value="Guardar" ></td>
+                    <td colspan="2"><input name="btnGuardar" type="button" value="Guardar" onclick="validar()"></td>
                 </tr>
             </table>
         </form>

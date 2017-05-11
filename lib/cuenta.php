@@ -219,6 +219,18 @@ class Cuenta {
       $this->con->desconectarse();
    }
 
+   function listarTopSucursal(){
+    $this->con->conectarse();
+      $this->con->sql = "SELECT s.nombre, sum(r.cantidad) as total, c.id_sucursal ".
+            " FROM  cuenta c , sucursal s , reg_tran r WHERE r.id_cuenta = c.id_cuenta AND c.id_sucursal = s.id_sucursal GROUP BY s.id_sucursal ORDER BY total desc";
+
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
+
 }
 
 ?>
