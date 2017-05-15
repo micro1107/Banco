@@ -82,6 +82,7 @@ else {
 			<div id="contenido">
              <?php 
                                 switch ( $_GET['sel'] ) {
+                                    
                                     case 'U1'   : include ('usuario/usuario_listar.php');
                                                 break;
                                     case 'U2'  : include('usuario_formulario.php');
@@ -157,7 +158,7 @@ else {
                                                 break;
                                     case 'P10'  : include('cuenta/cuenta_retirar.php');
                                                 break;
-                                    case 'P11'  : include('cuenta/cuenta_transferir.php');
+                                    case 'P11'  : include('cuenta/cuenta_transferirMD.php');
                                                 break;
                                     case 'P12'  : include('cuenta/cuenta_sobregirar.php');
                                                 break;
@@ -185,7 +186,19 @@ else {
 
                                     case 'PDF2'  : include('cliente/cliente_listar_pdf.php');
                                                 break;
-                                    } 
+
+                                    case 'PDF3'  : include('cuenta/cuenta_top_sucursal_pdf.php');
+                                                break;
+
+                                    
+                                    case 'UP1'  : include('subirArchivos.php');
+                                                break;
+                                    case 'UPF'  : include('subirFoto.php');
+                                                break;
+                                    case 'UPF2'  : include('insertar.php');
+                                                break;
+                                }
+
                 ?>
             </div>
 		</div>

@@ -170,7 +170,7 @@ class Cuenta {
 
    function listarTop( ) {
       $this->con->conectarse();
-      $this->con->sql = "SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento,  ".
+      $this->con->sql = "SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento,   ".
                 "p.nombre as person, s.nombre ".
                 "FROM cuenta c , cliente p , sucursal s  WHERE c.documento = p.documento  and c.id_sucursal = s.id_sucursal and c.estado = 'A' ORDER BY c.saldo DESC";
 
@@ -221,7 +221,7 @@ class Cuenta {
 
    function listarTopSucursal(){
     $this->con->conectarse();
-      $this->con->sql = "SELECT s.nombre, sum(r.cantidad) as total, c.id_sucursal ".
+      $this->con->sql = "SELECT s.nombre, sum(r.cantidad) as total, c.id_sucursal, s.ciudad ".
             " FROM  cuenta c , sucursal s , reg_tran r WHERE r.id_cuenta = c.id_cuenta AND c.id_sucursal = s.id_sucursal GROUP BY s.id_sucursal ORDER BY total desc";
 
 

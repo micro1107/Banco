@@ -44,19 +44,23 @@
     </style>
     <script>
          function abrirPdf(){
-
-                document.pdf.action = "cuenta/cuenta_top_pdf.php";
+                document.pdf.action = "cuenta/cuenta_top_sucursal_pdf.php";
                 document.pdf.target = "pdf";
+                document.pdf.submit();
+        }
+        function abrirEx(){
+                document.pdf.action = "cuenta/cuenta_top_sucursal_ex.php";
+                document.pdf.target = "excel";
                 document.pdf.submit();
         }
     </script>
 </head>
 <body>
     <h1>Top Sucursales</h1>
-	<form name="pdf" action="index.php?sel=PDF1">
+	<form name="pdf" action="index.php?sel=PDF3">
         <table border="1" class="tabla">
             <tr class="titulo">
-            <td>TOP</td><td>NOMBRE</td><td>TOTAL</td>
+            <td>TOP</td><td>CIUDAD</td><td>NOMBRE</td><td>TOTAL</td>
             </tr>
             <?php
                 include("lib/config.php");
@@ -76,6 +80,7 @@
 
                     print "<tr>";
                     print "<td>".$top."</td>";
+                    print "<td>".$row['ciudad']."</td>";
                     print "<td>".$row['nombre']."</td>";
                     print "<td>".$row['total']."</td>";
                     print "</tr>";
@@ -83,8 +88,9 @@
                     } 
                 }
             ?>
-            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="Imprimir" onclick="javascript:window.location='index.php?sel=PDF1';" ></td></tr>
-            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="Imprimir" onclick="abrirPdf()" ></td></tr>
+            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarPDF" onclick="abrirPdf()" ></td>
+            <td><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarExcel" onclick="abrirEx()" ></td>
+            </tr>
         </table>
         </form>
 </body>

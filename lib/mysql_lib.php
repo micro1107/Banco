@@ -44,7 +44,9 @@ function conectarse() {
  function actualizar() {
     $this->rtaSql = mysql_query($this->sql);
     }
- 
+ function consultarArchivo() {
+    $this->rtaSql = mysql_query($this->sql);
+    }
 function desconectarse() {
     mysql_close();
     }

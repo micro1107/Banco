@@ -31,6 +31,7 @@
                 <li><a href='index.php?sel=SO1'>Sobregiros</a></li>
                 <li><a href='index.php?sel=TOP2'>Top Sucursales</a></li>
                 <li><a href='index.php?sel=TOP1'>Top 10 Cuentas</a></li>
+                <li><a href='index.php?sel=UP1'>Subir Imagen</a></li>
             </ul>
         </li>
     </nav>                                                          

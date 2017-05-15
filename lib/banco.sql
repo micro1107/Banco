@@ -70,6 +70,40 @@ id_transaccion int(4) PRIMARY KEY NOT NULL,
 tipo varchar(2) NOT NULL
 );
 
+
+CREATE TABLE archivos (
+  id int(10) unsigned PRIMARY KEY NOT NULL auto_increment,
+  archivo_binario medium_blob NOT NULL,
+  archivo_nombre varchar(255) NOT NULL default '',
+  archivo_peso varchar(15) NOT NULL default '',
+  archivo_tipo varchar(25) NOT NULL default '',
+  documento int(15) NOT NULL
+) ;
+
+CREATE TABLE persona_archivo (
+  
+id int(11) primary key auto_increment,
+  
+id_persona int(15) NOT NULL,
+  
+nombre varchar(100) NOT NULL,
+  
+tipo varchar(30) NOT NULL,
+  
+archivo mediumblob NOT NULL 
+  
+
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE tmp_registro (
+	id int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	cantidad double(10,2) NOT NULL,
+	cuenta int(15) NOT NULL,
+	fecha timestamp DEFAULT current_timestamp,
+	id_transaccion int(4) NOT NULL,
+	id_cuenta int(15) NOT NULL
+);
+
 INSERT INTO rol (id_rol, tipo) VALUES (1,'A');
 INSERT INTO rol (id_rol, tipo) VALUES (2,'F');
 INSERT INTO rol (id_rol, tipo) VALUES (3,'C');
