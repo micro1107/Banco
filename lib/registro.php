@@ -48,7 +48,7 @@ class Registro {
         return $this->cantidad;
     }
 
-    function setCuenta( $ccuenta) {
+    function setCuenta( $cuenta) {
         $this->cuenta = $cuenta;
     }
 
@@ -144,6 +144,32 @@ class Registro {
         $mail = " ".$this->nombre." , se ha sobregirado su cuenta por un valor de ".$this->getCantidad() . " ";
         //Titulo
         $titulo = "Sobregiro a su cuenta";
+        //cabecera
+        $headers = "MIME-Version: 1.0\r\n"; 
+        $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+        //dirección del remitente 
+        $headers .= "From:Banco El Ahorro<lucasamauri@gmail.com>\r\n";
+        //Enviamos el mensaje a tu_dirección_email 
+
+        $bool = mail($this->email,$titulo,$mail,$headers);
+                                                     
+        $this->con->conectarse();
+        $this->con->actualizar();
+        $this->con->desconectarse();                                                   
+
+    }
+    function insertarTransferencia( $email,$nombre) {
+        $this->email = $email;  
+        $this->nombre = $nombre;
+        $this->con->sql= "INSERT INTO reg_tran (cantidad, id_transaccion, cuenta, id_cuenta) VALUES (
+                                                     ".$this->getCantidad().",                                                    
+                                                     ".$this->getId_transaccion().",
+                                                     ".$this->getCuenta().",
+                                                     ".$this->getId_cuenta().")";
+        
+        $mail = " ".$this->nombre." , se ha transferido por un valor de ".$this->getCantidad() . " ";
+        //Titulo
+        $titulo = "Transferencia a su cuenta";
         //cabecera
         $headers = "MIME-Version: 1.0\r\n"; 
         $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 

@@ -96,7 +96,7 @@ archivo mediumblob NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE tmp_registro (
-	id int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_registro int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	cantidad double(10,2) NOT NULL,
 	cuenta int(15) NOT NULL,
 	fecha timestamp DEFAULT current_timestamp,

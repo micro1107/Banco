@@ -48,7 +48,7 @@ class Tmp_registro {
         return $this->cantidad;
     }
 
-    function setCuenta( $ccuenta) {
+    function setCuenta( $cuenta) {
         $this->cuenta = $cuenta;
     }
 
@@ -65,7 +65,7 @@ class Tmp_registro {
     }
 
     function setId_transaccion( $id_transaccion) {
-        $this->id_transaccion = 3;
+        $this->id_transaccion = $id_transaccion;
     }
 
     function getId_transaccion( ) {
@@ -139,14 +139,23 @@ class Tmp_registro {
       $this->con->desconectarse();
    }
 
-  function listar( ) {
+  function listar($id_cuenta) {
+      $this->id_cuenta = $id_cuenta;
       $this->con->conectarse();
       $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, p.nombre, r.cuenta ".
-                " FROM tmp_registro r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.cuenta ";
+                " FROM tmp_registro r, cliente p, cuenta c  WHERE r.id_cuenta = ".$this->id_cuenta." AND p.documento = c.documento AND c.id_cuenta = r.cuenta ";
 
       $this->con->consultar();
       $this->lista = $this->con->rtaSql;
       $this->numReg = $this->con->numReg;
       $this->con->desconectarse();
+   }
+   function cancelar($id_cuenta){
+      $this->id_cuenta = $id_cuenta;
+        $this->con->sql= "DELETE FROM tmp_registro WHERE id_cuenta =".$this->id_cuenta."";
+                    
+        $this->con->conectarse();
+        $this->con->actualizar();
+        $this->con->desconectarse(); 
    }
  }
