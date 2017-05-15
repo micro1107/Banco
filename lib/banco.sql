@@ -35,7 +35,7 @@ CREATE TABLE cuenta(
 id_cuenta int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipo varchar(2) NOT NULL,
 fecha_crea timestamp DEFAULT current_timestamp,
-saldo double(10,2),
+saldo double(50,2),
 estado varchar(2) NOT NULL,
 documento int(15) NOT NULL,
 id_sucursal int(4) NOT NULL

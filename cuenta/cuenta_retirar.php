@@ -19,9 +19,10 @@
     <script>
        function validar() {
 
-            var txtMonto;
+            var txtMonto, txtSaldo;
 
             txtMonto = document.cuenta_consignar.txtMonto.value;
+            txtSaldo = document.cuenta_consignar.txtSaldo.value;
 
             if (txtMonto=="" || txtMonto==null){
                 alert("Error: Debe digitar un valor");
@@ -35,6 +36,16 @@
                 }
                 else if (txtMonto <= 0){
                     alert("Error: Debe digitar un valor válido para el monto");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
+                else if (txtMonto > txtSaldo ){
+                    alert("Error: El monto supera al saldo en la cuenta");
+                    document.cuenta_consignar.txtMonto.focus();
+                    return;
+                }
+                else if ((txtSaldo-txtMonto) < 10000 ){
+                    alert("Error: El monto supera el minimo a dejar en saldo");
                     document.cuenta_consignar.txtMonto.focus();
                     return;
                 }

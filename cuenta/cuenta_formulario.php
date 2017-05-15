@@ -35,7 +35,12 @@
                 }
                 else if (txtSaldo <= 0){
                     alert("Error: Debe digitar un valor válido para el monto");
-                    document.cuenta_grabar.txtMonto.focus();
+                    document.cuenta_grabar.txtSaldo.focus();
+                    return;
+                }
+                else if (txtSaldo < 10000){
+                    alert("Error: Debe digitar un valor mayor a 10000 en el monto");
+                    document.cuenta_grabar.txtSaldo.focus();
                     return;
                 }
             else{

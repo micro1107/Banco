@@ -42,6 +42,20 @@
     }
 
     </style>
+    <script>
+         function abrirPdf(){
+                var documento = document.pdf.documento.value;
+                document.pdf.action = "registro/registro_persona_pdf.php?documento"+documento;
+                document.pdf.target = "pdf";
+                document.pdf.submit();
+        }
+        function abrirEx(){
+                var documento = document.pdf.documento.value;
+                document.pdf.action = "registro/registro_persona_ex.php?documento"+documento;
+                document.pdf.target = "Excel";
+                document.pdf.submit();
+        }
+    </script>
 </head>
 <body>
     <?php 
@@ -55,7 +69,7 @@
     
     print "<h1>Historial de Transacciones de ". $p->getNombre() ."</h1>";
 	?>
-    <form name="index" action="index.php?sel=P2">
+    <form name="pdf" action="index.php?sel=P2">
         <table border="1" class="tabla">
             <tr class="titulo">
             <td>ID_REGISTRO</td><td>ID_CUENTA</td><td>TRANSACCION</td><td>TITULAR</td><td>MONTO</td><td>FECHA</td>
@@ -92,7 +106,13 @@
                     print "<td>".$row['fecha']."</td>";                    
                     print "</tr>";
                 }
+
+                print "<input type=hidden name=documento value=".$_GET['documento'].">";
             ?>
+
+            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarPDF" onclick="abrirPdf()" ></td>
+            <td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarExcel" onclick="abrirEx()" ></td>
+            </tr>
         </table>
         </form>
 </body>

@@ -14,9 +14,9 @@ header("Content-Disposition: attachment; filename=Reporte_Personal_usuarios.xls"
 <body>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="6" bgcolor="skyblue"><CENTER><strong>TOP SUCURSALES CON MAS FLUJO DE DINERO</strong></CENTER></td>
+    <td colspan="6" bgcolor="#CCE5FF"><CENTER><strong>TOP SUCURSALES CON MAS FLUJO DE DINERO</strong></CENTER></td>
   </tr>
-  <tr bgcolor="red">
+  <tr bgcolor="#276EFF">
     <td><strong>TOP</strong></td>
     <td><strong>CIUDAD</strong></td>
     <td><strong>NOMBRE</strong></td>

@@ -6,6 +6,7 @@
                 include("lib/usuario.php");
                 include("lib/rol.php");
                 include("lib/cliente.php");
+                include("lib/funcionario.php");
 
                 $p = new Usuario();
 
@@ -16,28 +17,44 @@
                 $p->listar();
                 $result = $p->lista;
 
+                $rol = $_POST['txtRol'];
                 $alerta2=0;
 
                 while ($row = mysql_fetch_array($result)) {
                 if ($row['login']==$_POST['txtLogin']){
                     $alerta = 1;
-                    break;
                 }
                 }
 
-                $c = new Cliente();
-                $c->listar();
-                $res = $c->lista;
+                switch ($rol) {
+                    case 'C':
+                        $c = new Cliente();
+                        $c->listar();
+                        $res = $c->lista;
 
-                while ($row = mysql_fetch_array($res)) {
-                if ($row['documento']==$_POST['txtDocumento']) {
-                    $alerta2 = 2;
+                        while ($row = mysql_fetch_array($res)) {
+                        if ($row['documento']==$_POST['txtDocumento']) {
+                            $alerta2 = 2;
+                        }
+                        }
+                        break;
+                    case 'F':
+                        $f = new Funcionario();
+                        $f->listar();
+                        $res = $f->lista;
+                        while ($row = mysql_fetch_array($res)) {
+                        if ($row['documento']==$_POST['txtDocumento']) {
+                            $alerta2 = 2;
+                        }
+                        }
+                        break;
+                    case 'A':
+                        $alerta2 =2;
+                        break;
                 }
-                }
-                
+
                 if ($alerta2==0) {
                 echo "El documento asociado no existe";
-            
                 }
                 elseif($alerta!=1){
                 $p->setLogin($_POST['txtLogin']);

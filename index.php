@@ -111,6 +111,8 @@ else {
                                                 break;
                                     case 'C6'  : include('cliente/cliente_actualizar.php');  
                                                 break;
+                                    case 'C7'  : include('cliente/cliente_perfil.php');  
+                                                break;
 
                                     case 'F1'   : include ('funcionario/funcionario_listar.php');
                                                 break;

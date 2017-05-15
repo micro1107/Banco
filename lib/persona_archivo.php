@@ -35,7 +35,7 @@
           $this->con->conectarse();
           $this->con->sql = "SELECT archivo, tipo 
                              FROM persona_archivo 
-                             WHERE id = ".$this->id."; ";
+                             WHERE id_persona = ".$this->id."; ";
 
           $this->con->consultar();
           $this->numReg=$this->con->numReg;

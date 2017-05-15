@@ -49,6 +49,12 @@
                 document.pdf.target = "pdf";
                 document.pdf.submit();
         }
+        function abrirEx(){
+
+                document.pdf.action = "cuenta/cuenta_top_ex.php";
+                document.pdf.target = "Excel";
+                document.pdf.submit();
+        }
     </script>
 </head>
 <body>
@@ -104,8 +110,9 @@
                     } 
                 }
             ?>
-            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="Imprimir" onclick="javascript:window.location='index.php?sel=PDF1';" ></td></tr>
-            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="Imprimir" onclick="abrirPdf()" ></td></tr>
+            <tr><td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarPDF" onclick="abrirPdf()" ></td>
+            <td colspan="7"><input name="btnInsertar" type="button" class="botonNuevo" value="DescargarExcel" onclick="abrirEx()" ></td>
+            </tr>
         </table>
         </form>
 </body>

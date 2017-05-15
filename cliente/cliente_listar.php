@@ -76,6 +76,7 @@
                     print "<td>".$row['email']."</td>";
                     print "<td>".$row['direccion']."</td>";
                     print "<td>".$row['telefono']."</td>";
+                    print "<td><a href='index.php?sel=C7&"."documento=".$row['documento']."'>Ver Perfil</a></td>";
                     print "<td><a href='index.php?sel=P5&"."documento=".$row['documento']."'>Ver Cuentas</a></td>";
                     print "<td><a href='index.php?sel=RE2&"."documento=".$row['documento']."'>Ver Movimientos</a></td>";
                     print "<td><a href='index.php?sel=UPF&"."documento=".$row['documento']."'>Subir Foto</a></td>";
@@ -84,8 +85,7 @@
                     print "</tr>";
                 }
             ?>
-            <tr><td colspan="5"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
-            <tr><td colspan="5"><input name="btnImprimir" type="button" class="botonNuevo" onclick="javascript:abrirPdf();" value="Imprimir"></td></tr>
+            <tr><td colspan="11"><input name="btnInsertar" type="button" class="botonNuevo" onclick="javascript:window.location='index.php?sel=C2';" value="Nuevo"></td></tr>
         </table>
         </form>
 </body>

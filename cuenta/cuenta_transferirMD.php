@@ -12,7 +12,10 @@
             }
 
             function agregarItem() {
-                var txtMonto = document.formulario.txtMonto.value;
+                var txtMonto, txtSaldo;
+
+                    txtSaldo = document.formulario.txtSaldo.value;
+                    txtMonto = document.formulario.txtMonto.value;
                 if (document.formulario.txtMonto.value<1) {
                     alert("Digite un monto mayor que 0.");
                     document.formulario.txtMonto.focus();
@@ -25,6 +28,16 @@
                 }
                 else if (txtMonto=="" || txtMonto==null){
                 alert("Error: Debe digitar un valor");
+                document.formulario.txtMonto.focus();
+                return;
+                }
+                else if (txtMonto > txtSaldo){
+                alert("Error: El monto supera el saldo");
+                document.formulario.txtMonto.focus();
+                return;
+                }
+                else if (txtSaldo < 10000){
+                alert("Error: El saldo está en el limite");
                 document.formulario.txtMonto.focus();
                 return;
                 }
@@ -51,7 +64,7 @@
         <form  name="formulario" action="grabarEd.php" method="post">
             
             <?php
-                include('lib/config.php');
+                include('./lib/config.php');
                 include('lib/mysql_lib.php');
                 include('lib/cliente.php');
                 include('lib/cuenta.php');
@@ -100,6 +113,7 @@
                         $saldo = $saldo - $total;
 
                         print "<h1>Saldo: " .$saldo. "<h1>";
+                        print "<input name= txtSaldo type= hidden value = ".$saldo." readonly>";
                     ?>
                     <td>Titular</td>
                     <td><input name="txtNombre" type="text" value="<?php echo $c->getNombre(); ?>" readonly></td>
@@ -120,10 +134,12 @@
                             $x->listar();
                             $result1 = $x->lista;
 
+                            $cl = new Cliente();
                         
                              while ($row1 = mysql_fetch_array($result1)) {
-
-                                print "<option value = $row1[id_cuenta]>$row1[id_cuenta]--$row1[documento]</option>";
+                                $cl->consultar($row1['documento']);
+                                $nombre = $cl->getNombre();
+                                print "<option value = $row1[id_cuenta]>Cuenta#:$row1[id_cuenta] -- $nombre</option>";
                             }
                         ?>
                         </select>   
