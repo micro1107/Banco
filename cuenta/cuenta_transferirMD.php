@@ -246,8 +246,8 @@
                             }
                         $saldo = $saldo - $total;
                         print "<h1>Saldo: " .number_format($saldo,0,',','.'). "<h1>";
-                        print "total:".$total;
-                        print "saldo post:".$_POST['txtSaldo'];
+                        //print "total:".$total;
+                        //print "saldo post:".$_POST['txtSaldo'];
                         print "<input name= txtSaldo type= hidden value = ".$saldo." >";
                     ?>
                     <td>Titular</td>

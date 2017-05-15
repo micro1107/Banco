@@ -268,6 +268,16 @@ class Registro {
       $this->numReg = $this->con->numReg;
       $this->con->desconectarse();
    }
+   function listarTransferencias( ) {
+      $this->con->conectarse();
+      $this->con->sql = "SELECT r.id_registro, r.cantidad, r.id_cuenta, r.fecha, p.nombre, p.telefono, p.email, c.saldo ".
+                "FROM reg_tran r, cliente p, cuenta c  WHERE p.documento = c.documento AND c.id_cuenta = r.id_cuenta AND r.id_transaccion = 3 ";
+
+      $this->con->consultar();
+      $this->lista = $this->con->rtaSql;
+      $this->numReg = $this->con->numReg;
+      $this->con->desconectarse();
+   }
 
  function listarMovimientosPersona($documento) {
       $this->documento = $documento;

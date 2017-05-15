@@ -172,6 +172,8 @@ else {
                                                 break;
                                     case 'RE1'  : include('registro/registro_retiro.php');
                                                 break;
+                                    case 'CU1'  : include('registro/registro_transferencia.php');
+                                                break;
                                     case 'SO1'  : include('registro/registro_sobregiro.php');
                                                 break;
                                     case 'RE2'  : include('registro/registro_persona.php');
@@ -199,6 +201,8 @@ else {
                                                 break;
                                     case 'UPF2'  : include('insertar.php');
                                                 break;
+                                    case '' : include('bienvenida.php');
+                                        break;
                                 }
 
                 ?>
