@@ -85,15 +85,15 @@ else {
                                     
                                     case 'U1'   : include ('usuario/usuario_listar.php');
                                                 break;
-                                    case 'U2'  : include('usuario_formulario.php');
+                                    case 'U2'  : include('usuario/usuario_formulario.php');
                                                 break;
-                                    case 'U3'  : include('usuario_grabar.php');
+                                    case 'U3'  : include('usuario/usuario_grabar.php');
                                                 break;
-                                    case 'U4'  : include('usuario_eliminar.php');
+                                    case 'U4'  : include('usuario/usuario_eliminar.php');
                                                 break;
-                                    case 'U5'  : include('usuario_editar.php');
+                                    case 'U5'  : include('usuario/usuario_editar.php');
                                                 break;
-                                    case 'U6'  : include('usuario_actualizar.php');  
+                                    case 'U6'  : include('usuario/usuario_actualizar.php');  
                                                 break;
 
                                     case 'R1' : include ('rol/rol_listar.php');

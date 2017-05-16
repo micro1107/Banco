@@ -20,10 +20,11 @@
             }
 
             function agregarItem() {
-                var txtMonto, txtSaldo, txtCuenta1;
+                var txtMonto, txtSaldo, txtCuenta1, total;
                     txtSaldo = document.formulario.txtSaldo.value;
                     txtMonto = document.formulario.txtMonto.value;
                     txtCuenta1 = document.formulario.txtCuenta1.value;
+                    total = document.formulario.total.value;
                 if (document.formulario.txtMonto.value<1) {
                     alert("Digite un monto mayor que 0.");
                     document.formulario.txtMonto.focus();
@@ -50,6 +51,11 @@
                 document.formulario.txtMonto.focus();
                 return;
                 }
+                else if ((txtSaldo-total) < 10000){
+                alert("Error: El saldo está en el limite");
+                document.formulario.txtMonto.focus();
+                return;
+                }
                 else {
                 document.formulario.txtAccion.value="INS_ITEM";
                 document.formulario.action = "index.php?sel=P11&id_cuenta="+txtCuenta1;
@@ -63,9 +69,23 @@
                     txtMonto = document.formulario.txtMonto.value;
                     txtCuenta1 = document.formulario.txtCuenta1.value;
 
-                    document.formulario.action = "index.php?sel=P11&id_cuenta="+txtCuenta1;
+                    total = document.formulario.total.value;
+                /*else if (txtMonto > txtSaldo){
+                alert("Error: El monto supera el saldo");
+                document.formulario.txtMonto.focus();
+                return;
+                }
+                */
+                if (txtSaldo < 10000){
+                alert("Error: El saldo está en el limite");
+                document.formulario.txtMonto.focus();
+                return;
+                }
+                else{
                     document.formulario.txtAccion.value="GR";
+                    document.formulario.action = "index.php?sel=P11&id_cuenta="+txtCuenta1;
                     document.formulario.submit();
+                }
             }
         
         </script>
@@ -188,7 +208,7 @@
                             $id_cuenta = $row['id_cuenta'];
                             $cuenta = $row['cuenta'];
                             $cantidad = $row['cantidad'];
-                            $total += $total+ $row['cantidad']; 
+                            $total3 = $total3 + $row['cantidad']; 
 
                             $ce2->consultar($row['cuenta']);
                             $saldoViejo2 = $ce2->getSaldo();
@@ -205,7 +225,8 @@
                             $r->insertarTransferencia($email,$nombre);
 
                             }
-                            $saldoNuevo = $saldoViejo - $total;
+
+                            $saldoNuevo = $saldoViejo - $total3;
                             $ce->setSaldo($saldoNuevo);
                             $ce->setId_cuenta($_GET['id_cuenta']);
                             $ce->actualizar();
@@ -319,14 +340,14 @@
                                 $total2 = $total2 + $row['cantidad'];
                                 
                             }
-                            //print "<input type=hidden name= total value= ".$total.">";
+                            print "<input type=hidden name= total value= ".$total.">";
                             print "<tr><td colspan=6>Total: </td><td align='right'>".number_format($total2,0,',','.')."</td></tr>
                                 ";
                             ?>
                             
                             <tr>
                             <td>
-                            <input name="btnGrabar" type="submit" value="Grabar" onclick="grabar()">
+                            <input name="btnGrabar" type="button" value="Grabar" onclick="grabar()">
                             </td>
                             </tr>                           
                             <input type="hidden" name="txtDato">

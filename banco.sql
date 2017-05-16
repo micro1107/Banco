@@ -41,12 +41,6 @@ documento int(15) NOT NULL,
 id_sucursal int(4) NOT NULL
 );
 
-CREATE TABLE detalle_cuenta(
-id_detalle int(2) PRIMARY KEY NOT NULL,
-retiro double(10,2),
-giro double(10,2),
-cuota double(10,2)
-);
 
 CREATE TABLE sucursal(
 id_sucursal int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL ,
@@ -99,25 +93,10 @@ INSERT INTO rol (id_rol, tipo) VALUES (1,'A');
 INSERT INTO rol (id_rol, tipo) VALUES (2,'F');
 INSERT INTO rol (id_rol, tipo) VALUES (3,'C');
 
+INSERT INTO usuario (login, pwd, estado, id_rol, documento) VALUES ('pepe',md5(123),'A',1,123);
+
 INSERT INTO transaccion (id_transaccion, tipo) VALUES (1, 'C');
 INSERT INTO transaccion (id_transaccion, tipo) VALUES (2, 'R');
 INSERT INTO transaccion (id_transaccion, tipo) VALUES (3, 'T');
 INSERT INTO transaccion (id_transaccion, tipo) VALUES (4, 'S');
 
-INSERT INTO usuario (login, pwd, estado, id_rol, documento) VALUES ('pepe',md5(123),'A',1,123);
-
-
-INSERT INTO cliente (documento, nombre, email, direccion, telefono) VALUES (123, 'Armando Casas', 'armando@gmail.com', 'Carrera 100 56-43', '948828939');
-
-INSERT INTO funcionario (documento, nombre, email, telefono, id_sucursal) VALUES (666, 'Ana Herrera', 'ana@gmail.com', '675665', 1);
-
-INSERT INTO sucursal (nombre, direccion, telefono, ciudad) VALUES ('Centro', 'Calle 5 13-9', '648823', 'Cali');
-INSERT INTO sucursal (nombre, direccion, telefono, ciudad) VALUES ('Ciudad Jardin', 'Calle 5 124-31', '787882', 'Cali');
-
-INSERT INTO cuenta (tipo, estado, saldo, documento, id_sucursal) VALUES ('A', 'A', 1000000, 123, 2);
-
-SELECT c.id_cuenta, c.tipo, c.saldo, c.id_sucursal, c.fecha_crea, c.estado, c.documento, p.nombre as person, s.nombre 
-FROM cuenta c , cliente p , sucursal s  WHERE c.documento = p.documento and c.id_sucursal = s.id_sucursal order by c.fecha_crea;
-
-SELECT s.nombre, sum(r.cantidad) as total, c.id_sucursal
-FROM  cuenta c , sucursal s , reg_tran r WHERE r.id_cuenta = c.id_cuenta AND c.id_sucursal = s.id_sucursal GROUP BY s.id_sucursal ORDER BY total desc;
