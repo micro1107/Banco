@@ -89,6 +89,16 @@ CREATE TABLE tmp_registro (
 	id_cuenta int(15) NOT NULL
 );
 
+CREATE TABLE archivo (
+	id int(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	documento int(15) NOT NULL,
+	nombre varchar(45) NOT NULL,
+	imagen longblob NOT NULL,
+	ruta varchar(250) NULL DEFAULT NULL
+);
+
+
+
 INSERT INTO rol (id_rol, tipo) VALUES (1,'A');
 INSERT INTO rol (id_rol, tipo) VALUES (2,'F');
 INSERT INTO rol (id_rol, tipo) VALUES (3,'C');

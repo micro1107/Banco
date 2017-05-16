@@ -80,6 +80,7 @@
                     print "<td><a href='index.php?sel=P5&"."documento=".$row['documento']."'>Ver Cuentas</a></td>";
                     print "<td><a href='index.php?sel=RE2&"."documento=".$row['documento']."'>Ver Movimientos</a></td>";
                     print "<td><a href='index.php?sel=UPF&"."documento=".$row['documento']."'>Subir Foto</a></td>";
+                    print "<td><a href='index.php?sel=UPFA&"."documento=".$row['documento']."'>Subir Archivos</a></td>";
                     print "<td><a href='index.php?sel=C5&"."documento=".$row['documento']."'>Editar</a></td>";
                     print "<td><a href='index.php?sel=C4&"."documento=".$row['documento']."'>Eliminar</a></td>";
                     print "</tr>";

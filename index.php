@@ -201,6 +201,8 @@ else {
                                                 break;
                                     case 'UPF2'  : include('insertar.php');
                                                 break;
+                                    case 'UPFA'  : include('subirForm.php');
+                                                break;
                                     case '' : include('bienvenida.php');
                                         break;
                                 }
